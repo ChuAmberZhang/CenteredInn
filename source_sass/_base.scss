@@ -1,192 +1,200 @@
 // Add any custom Sass & CSS here
-a{
-  color:#0e4061;
-}
-.button{
-  border-radius: 3px;
-  background-color: #d95552;
-}
-h1,h2,h3,h4,h5,h6{
-  font-family: $text;
-}
-.right{
-  text-align: right;
-}
-.top-bar{
-  padding-left: 100px;
-  padding-right: 50px;
-  a{
-    color: black;
-    font-family: $text;
-    float: right;
-  }
-  .button{
-    background-color: transparent;
-  }
-}
-.list{
+.landing{
   width:70%;
-  padding: 30px;
   margin: 0 auto;
   font-family: $text;
-  .setting{
-    margin-top:100px;
-  }
+
   .button{
     border-radius: 3px;
     background-color: #d95552;
   }
+
   header{
-    text-align:center;
-    font-size:80px;
-  }
-  .btn{
-    padding: 10px;
-    color:white;
-    background-color: cornflowerblue;
-    float: right;
-  }
+    text-align: center;
+    h1{
+      width: inherit;
+      font-family: $font-head;
+      position: relative;
 
-  .no-bullet{
-    margin-top: 20px;
+      font-size: $size-big;
+      color: white;
+      z-index: 100;
+      transform: translateY(150%);
 
-    .list-item{
-      background-color: #e6e6e6;
-      padding: 10px;
-      margin: 5px;
-      a{
-        font-size: 20px;
-        display:inline;
+      @include breakpoint(medium down){
+        font-size: 80px;
+        transform: translateY(100%);
+
       }
-      button{
-        display: inline;
-        float:right;
+      @include breakpoint(small down){
+        font-size: 60px;
+        transform: translateY(120%);
+
+      }
+
+
+    }
+  }
+  .img{
+    height: 600px;
+    background-image: url("../media/road.JPG");
+    background-size: cover;
+  }
+
+  .row{
+    text-align: center;
+    p{
+      text-align: center;
+      height: 20px;
+    }
+    #main-btn{
+
+      width: inherit;
+      text-align: center;
+      font-family: $font-head;
+      position: relative;
+      font-size: $size-mid;
+      color: white;
+      z-index: 100;
+      transform: translateY(250%);
+      .button{
+        background-color: $red;
+        box-shadow: 0 0 7px 0 rgba(0, 0, 0, .13);
+        border-radius: 200px;
+      }
+      .button:hover{
+        background-color: #C6514B;
+      }
+      @include breakpoint(medium down) {
+        font-size: 45px;
+        transform: translateY(380%);
+        top: 0;
+      }
+      @include breakpoint(small down) {
+        font-size: 25px;
+        transform: translateY(300%);
+        top: 0;
       }
     }
   }
-}
-#completed{
-  left:0;
-  display: none;
-}
-#edit{
-  background-color: #22bb5b;
-  margin-left:5px;
-  a{
-    font-size:18px;
-    color:white;
+
+  .transition {
+    left: 0;
+    margin-left: 50%;
+    position: absolute;
+    -webkit-transform: translate3d(-50%,0,0);
+    z-index: 2;
+
+    .btn {
+      hover { transform: scale(1.1); }
+      background-color: #FFF;
+      display: block;
+      width: 52px;
+      height: 52px;
+      -webkit-transition: fill .3s ease-in-out, transform .3s ease-in-out, color .3s ease-in-out;
+      -o-transition: fill .3s ease-in-out, transform .3s ease-in-out, color .3s ease-in-out;
+      transition: fill .3s ease-in-out, transform .3s ease-in-out, color .3s ease-in-out;
+      border-radius: 50%;
+      box-shadow: 0 0 7px 0 rgba(0, 0, 0, .13);
+      margin: -26px auto;
+      text-align: center;
+      i{
+        font-size: 30px;
+        position: relative;
+        top: 50%;
+        transform: translateY(-50%);
+        color:$offblack;
+      }
+    }
+    .btn:hover {
+      transform: scale(1.1);
+      i{
+        color:$pink;
+      }
+
+    }
   }
-}
-#addUser{
-  text-align: right;
-  width:100%;
-  height:50px;
-}
-.pagination{
-  padding:20px;
-  width:50%;
-  margin: 0  auto;
-  height: 70px;
-}
-#showC{
-  position: relative;
-}
-#filter{
-  width:100%;
-  float:left;
-  button{
-    float:left;
-  }
-}
-input:invalid {
-  border: 1px solid red;
-}
-button{
-  border-radius: 3px;
-  color:white;
-  background-color: #d95552;
-  float:right;
-  padding:10px;
-  right:10px;
-  position: relative;
-}
-.addTask {
-  margin: 0 auto;
-  width:70%;
-  padding: 100px;
-}
-/* Variables */
-/* Small Navigation */
-.logo-small {
-  float: right; }
-
-.title-bar {
-  padding: 0 .5rem; }
-
-.menu-icon,
-.title-bar-title {
-  position: relative;
-  top: 10px; }
-
-/* Medium-Up Navigation */
-/* Variables */
-
-// Adjust width accordingly (use even #'s)
-$logo-width: 118px;
-// Reduce px value to increase space between logo and menu text
-$logo-padding: $logo-width - 32px;
-// Leave alone
-$logo-margin: - ($logo-width / 2);
-
-/* Small Navigation */
-.logo-small {
-  float: right;
-}
-
-.title-bar {
-  padding: 0 .5rem;
-}
-
-.menu-icon,
-.title-bar-title {
-  position: relative;
-  top: 10px;
-}
-
-/* Medium-Up Navigation */
-@media only screen and (min-width: 40rem) {
-
-  .logo-wrapper {
+  #section_1{
     position: relative;
+    border: 10px;
+    height: 600px;
+    text-align: center;
+    background-image: url("../media/road.JPG");
+    background-size: cover;
 
-    .logo {
-      width: $logo-width;
-      height:  92px;
-      position: absolute;
-      left: 50%;
-      right: 50%;
-      top: -6px;
-      margin-left: $logo-margin;
+    @include breakpoint(small down){
+      height: 400px;
     }
-  }
-
-  // Right part
-  .top-bar-right {
-    width: 50%;
-    padding-left: $logo-padding;
-
-    ul {
-      float: left;
+    #tri{
+      @include breakpoint(small down){
+        position: relative;
+        top: -100px;
+      }
     }
-  }
-
-  // Left part
-  .top-bar-left {
-    width:  50%;
-    padding-right: $logo-padding;
-
-    ul {
-      float: right;
+    .pic{
+      display: none;
     }
+    center{
+      width: inherit;
+      text-align: right;
+      font-size: $size-big;
+      color: black;
+      z-index: 100;
+
+    }
+    h1{
+      width: inherit;
+      font-family: $font-head;
+      position: relative;
+
+      font-size: $size-big;
+      color: white;
+      z-index: 100;
+      transform: translateY(150%);
+
+      @include breakpoint(medium down){
+        font-size: 80px;
+        transform: translateY(100%);
+
+      }
+      @include breakpoint(small down){
+        font-size: 60px;
+        transform: translateY(120%);
+
+      }
+
+
+    }
+    #main-btn{
+
+      width: inherit;
+      text-align: center;
+      font-family: $font-head;
+      position: relative;
+      font-size: $size-mid;
+      color: white;
+      z-index: 100;
+      transform: translateY(250%);
+      .button{
+        background-color: $red;
+        box-shadow: 0 0 7px 0 rgba(0, 0, 0, .13);
+        border-radius: 200px;
+      }
+      .button:hover{
+        background-color: #C6514B;
+      }
+      @include breakpoint(medium down) {
+        font-size: 45px;
+        transform: translateY(380%);
+        top: 0;
+      }
+      @include breakpoint(small down) {
+        font-size: 25px;
+        transform: translateY(300%);
+        top: 0;
+      }
+    }
+
   }
 }
+
