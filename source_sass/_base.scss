@@ -1,6 +1,6 @@
 // Add any custom Sass & CSS here
 .landing{
-  width:70%;
+  width:100%;
   margin: 0 auto;
   font-family: $text;
 
@@ -9,46 +9,61 @@
     background-color: #d95552;
   }
 
-  header{
+
+  #landing-main{
+    position: relative;
+    border: 10px;
+    height: 650px;
     text-align: center;
-    h1{
+    background-image: url("../media/road.JPG");
+    background-size: cover;
+
+    @include breakpoint(small down){
+      height: 400px;
+    }
+    #tri{
+      @include breakpoint(small down){
+        position: relative;
+        top: -100px;
+      }
+    }
+    .pic{
+      display: none;
+    }
+    center{
+      width: inherit;
+      text-align: right;
+      font-size: $size-big;
+      color: black;
+      z-index: 100;
+
+    }
+    h4{
       width: inherit;
       font-family: $font-head;
       position: relative;
 
-      font-size: $size-big;
+      font-size: 80px;
       color: white;
       z-index: 100;
       transform: translateY(150%);
 
       @include breakpoint(medium down){
-        font-size: 80px;
+        font-size: 60px;
         transform: translateY(100%);
 
       }
       @include breakpoint(small down){
-        font-size: 60px;
+        font-size: 40px;
         transform: translateY(120%);
 
       }
 
 
     }
-  }
-  .img{
-    height: 600px;
-    background-image: url("../media/road.JPG");
-    background-size: cover;
-  }
 
-  .row{
-    text-align: center;
-    p{
-      text-align: center;
-      height: 20px;
-    }
     #main-btn{
-
+      margin-top: 300px;
       width: inherit;
       text-align: center;
       font-family: $font-head;
@@ -56,27 +71,39 @@
       font-size: $size-mid;
       color: white;
       z-index: 100;
-      transform: translateY(250%);
-      .button{
-        background-color: $red;
-        box-shadow: 0 0 7px 0 rgba(0, 0, 0, .13);
-        border-radius: 200px;
-      }
-      .button:hover{
-        background-color: #C6514B;
+      //transform: translateY(250%);
+      span {
+        input {
+          width: 40%;
+          height: 45px;
+          border-radius: 7px;
+          //transform: translateY(400%);
+        }
+        .button {
+          background-color: $red;
+          box-shadow: 0 0 7px 0 rgba(0, 0, 0, .13);
+          border-radius: 200px;
+          position: relative;
+          transform: translateY(13%);
+        }
+        .button:hover {
+          background-color: #C6514B;
+        }
       }
       @include breakpoint(medium down) {
         font-size: 45px;
-        transform: translateY(380%);
+        //transform: translateY(380%);
         top: 0;
       }
       @include breakpoint(small down) {
         font-size: 25px;
-        transform: translateY(300%);
+        //transform: translateY(300%);
         top: 0;
       }
     }
+
   }
+
 
   .transition {
     left: 0;
@@ -114,87 +141,6 @@
 
     }
   }
-  #section_1{
-    position: relative;
-    border: 10px;
-    height: 600px;
-    text-align: center;
-    background-image: url("../media/road.JPG");
-    background-size: cover;
 
-    @include breakpoint(small down){
-      height: 400px;
-    }
-    #tri{
-      @include breakpoint(small down){
-        position: relative;
-        top: -100px;
-      }
-    }
-    .pic{
-      display: none;
-    }
-    center{
-      width: inherit;
-      text-align: right;
-      font-size: $size-big;
-      color: black;
-      z-index: 100;
-
-    }
-    h1{
-      width: inherit;
-      font-family: $font-head;
-      position: relative;
-
-      font-size: $size-big;
-      color: white;
-      z-index: 100;
-      transform: translateY(150%);
-
-      @include breakpoint(medium down){
-        font-size: 80px;
-        transform: translateY(100%);
-
-      }
-      @include breakpoint(small down){
-        font-size: 60px;
-        transform: translateY(120%);
-
-      }
-
-
-    }
-    #main-btn{
-
-      width: inherit;
-      text-align: center;
-      font-family: $font-head;
-      position: relative;
-      font-size: $size-mid;
-      color: white;
-      z-index: 100;
-      transform: translateY(250%);
-      .button{
-        background-color: $red;
-        box-shadow: 0 0 7px 0 rgba(0, 0, 0, .13);
-        border-radius: 200px;
-      }
-      .button:hover{
-        background-color: #C6514B;
-      }
-      @include breakpoint(medium down) {
-        font-size: 45px;
-        transform: translateY(380%);
-        top: 0;
-      }
-      @include breakpoint(small down) {
-        font-size: 25px;
-        transform: translateY(300%);
-        top: 0;
-      }
-    }
-
-  }
 }
 

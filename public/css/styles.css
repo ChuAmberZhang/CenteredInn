@@ -4521,85 +4521,102 @@ table.hover tbody tr:nth-of-type(even):hover {
 
 /* line 2, ../../source_sass/_base.scss */
 .landing {
-  width: 70%;
+  width: 100%;
   margin: 0 auto;
   font-family: "Droid Serif", serif; }
   /* line 7, ../../source_sass/_base.scss */
   .landing .button {
     border-radius: 3px;
     background-color: #d95552; }
-  /* line 12, ../../source_sass/_base.scss */
-  .landing header {
-    text-align: center; }
-    /* line 14, ../../source_sass/_base.scss */
-    .landing header h1 {
+  /* line 13, ../../source_sass/_base.scss */
+  .landing #landing-main {
+    position: relative;
+    border: 10px;
+    height: 650px;
+    text-align: center;
+    background-image: url("../media/road.JPG");
+    background-size: cover; }
+    @media screen and (max-width: 39.9375em) {
+      /* line 13, ../../source_sass/_base.scss */
+      .landing #landing-main {
+        height: 400px; } }
+    @media screen and (max-width: 39.9375em) {
+      /* line 24, ../../source_sass/_base.scss */
+      .landing #landing-main #tri {
+        position: relative;
+        top: -100px; } }
+    /* line 30, ../../source_sass/_base.scss */
+    .landing #landing-main .pic {
+      display: none; }
+    /* line 33, ../../source_sass/_base.scss */
+    .landing #landing-main center {
+      width: inherit;
+      text-align: right;
+      font-size: 90px;
+      color: black;
+      z-index: 100; }
+    /* line 41, ../../source_sass/_base.scss */
+    .landing #landing-main h4 {
       width: inherit;
       font-family: arial;
       position: relative;
-      font-size: 90px;
+      font-size: 80px;
       color: white;
       z-index: 100;
       transform: translateY(150%); }
       @media screen and (max-width: 63.9375em) {
-        /* line 14, ../../source_sass/_base.scss */
-        .landing header h1 {
-          font-size: 80px;
+        /* line 41, ../../source_sass/_base.scss */
+        .landing #landing-main h4 {
+          font-size: 60px;
           transform: translateY(100%); } }
       @media screen and (max-width: 39.9375em) {
-        /* line 14, ../../source_sass/_base.scss */
-        .landing header h1 {
-          font-size: 60px;
+        /* line 41, ../../source_sass/_base.scss */
+        .landing #landing-main h4 {
+          font-size: 40px;
           transform: translateY(120%); } }
-  /* line 38, ../../source_sass/_base.scss */
-  .landing .img {
-    height: 600px;
-    background-image: url("../media/road.JPG");
-    background-size: cover; }
-  /* line 44, ../../source_sass/_base.scss */
-  .landing .row {
-    text-align: center; }
-    /* line 46, ../../source_sass/_base.scss */
-    .landing .row p {
-      text-align: center;
-      height: 20px; }
-    /* line 50, ../../source_sass/_base.scss */
-    .landing .row #main-btn {
+    /* line 65, ../../source_sass/_base.scss */
+    .landing #landing-main #main-btn {
+      margin-top: 300px;
       width: inherit;
       text-align: center;
       font-family: arial;
       position: relative;
       font-size: 60px;
       color: white;
-      z-index: 100;
-      transform: translateY(250%); }
-      /* line 60, ../../source_sass/_base.scss */
-      .landing .row #main-btn .button {
+      z-index: 100; }
+      /* line 76, ../../source_sass/_base.scss */
+      .landing #landing-main #main-btn span input {
+        width: 40%;
+        height: 45px;
+        border-radius: 7px; }
+      /* line 82, ../../source_sass/_base.scss */
+      .landing #landing-main #main-btn span .button {
         background-color: #FF847C;
         box-shadow: 0 0 7px 0 rgba(0, 0, 0, 0.13);
-        border-radius: 200px; }
-      /* line 65, ../../source_sass/_base.scss */
-      .landing .row #main-btn .button:hover {
+        border-radius: 200px;
+        position: relative;
+        transform: translateY(13%); }
+      /* line 89, ../../source_sass/_base.scss */
+      .landing #landing-main #main-btn span .button:hover {
         background-color: #C6514B; }
       @media screen and (max-width: 63.9375em) {
-        /* line 50, ../../source_sass/_base.scss */
-        .landing .row #main-btn {
+        /* line 65, ../../source_sass/_base.scss */
+        .landing #landing-main #main-btn {
           font-size: 45px;
-          transform: translateY(380%);
           top: 0; } }
       @media screen and (max-width: 39.9375em) {
-        /* line 50, ../../source_sass/_base.scss */
-        .landing .row #main-btn {
+        /* line 65, ../../source_sass/_base.scss */
+        .landing #landing-main #main-btn {
           font-size: 25px;
-          transform: translateY(300%);
           top: 0; } }
-  /* line 81, ../../source_sass/_base.scss */
+  /* line 108, ../../source_sass/_base.scss */
   .landing .transition {
     left: 0;
     margin-left: 50%;
     position: absolute;
     -webkit-transform: translate3d(-50%, 0, 0);
     z-index: 2; }
-    /* line 88, ../../source_sass/_base.scss */
+    /* line 115, ../../source_sass/_base.scss */
     .landing .transition .btn {
       background-color: #FFF;
       display: block;
@@ -4612,98 +4629,22 @@ table.hover tbody tr:nth-of-type(even):hover {
       box-shadow: 0 0 7px 0 rgba(0, 0, 0, 0.13);
       margin: -26px auto;
       text-align: center; }
-      /* line 89, ../../source_sass/_base.scss */
+      /* line 116, ../../source_sass/_base.scss */
       .landing .transition .btn hover {
         transform: scale(1.1); }
-      /* line 101, ../../source_sass/_base.scss */
+      /* line 128, ../../source_sass/_base.scss */
       .landing .transition .btn i {
         font-size: 30px;
         position: relative;
         top: 50%;
         transform: translateY(-50%);
         color: #2A363B; }
-    /* line 109, ../../source_sass/_base.scss */
+    /* line 136, ../../source_sass/_base.scss */
     .landing .transition .btn:hover {
       transform: scale(1.1); }
-      /* line 111, ../../source_sass/_base.scss */
+      /* line 138, ../../source_sass/_base.scss */
       .landing .transition .btn:hover i {
         color: #DEA5A4; }
-  /* line 117, ../../source_sass/_base.scss */
-  .landing #section_1 {
-    position: relative;
-    border: 10px;
-    height: 600px;
-    text-align: center;
-    background-image: url("../media/road.JPG");
-    background-size: cover; }
-    @media screen and (max-width: 39.9375em) {
-      /* line 117, ../../source_sass/_base.scss */
-      .landing #section_1 {
-        height: 400px; } }
-    @media screen and (max-width: 39.9375em) {
-      /* line 128, ../../source_sass/_base.scss */
-      .landing #section_1 #tri {
-        position: relative;
-        top: -100px; } }
-    /* line 134, ../../source_sass/_base.scss */
-    .landing #section_1 .pic {
-      display: none; }
-    /* line 137, ../../source_sass/_base.scss */
-    .landing #section_1 center {
-      width: inherit;
-      text-align: right;
-      font-size: 90px;
-      color: black;
-      z-index: 100; }
-    /* line 145, ../../source_sass/_base.scss */
-    .landing #section_1 h1 {
-      width: inherit;
-      font-family: arial;
-      position: relative;
-      font-size: 90px;
-      color: white;
-      z-index: 100;
-      transform: translateY(150%); }
-      @media screen and (max-width: 63.9375em) {
-        /* line 145, ../../source_sass/_base.scss */
-        .landing #section_1 h1 {
-          font-size: 80px;
-          transform: translateY(100%); } }
-      @media screen and (max-width: 39.9375em) {
-        /* line 145, ../../source_sass/_base.scss */
-        .landing #section_1 h1 {
-          font-size: 60px;
-          transform: translateY(120%); } }
-    /* line 168, ../../source_sass/_base.scss */
-    .landing #section_1 #main-btn {
-      width: inherit;
-      text-align: center;
-      font-family: arial;
-      position: relative;
-      font-size: 60px;
-      color: white;
-      z-index: 100;
-      transform: translateY(250%); }
-      /* line 178, ../../source_sass/_base.scss */
-      .landing #section_1 #main-btn .button {
-        background-color: #FF847C;
-        box-shadow: 0 0 7px 0 rgba(0, 0, 0, 0.13);
-        border-radius: 200px; }
-      /* line 183, ../../source_sass/_base.scss */
-      .landing #section_1 #main-btn .button:hover {
-        background-color: #C6514B; }
-      @media screen and (max-width: 63.9375em) {
-        /* line 168, ../../source_sass/_base.scss */
-        .landing #section_1 #main-btn {
-          font-size: 45px;
-          transform: translateY(380%);
-          top: 0; } }
-      @media screen and (max-width: 39.9375em) {
-        /* line 168, ../../source_sass/_base.scss */
-        .landing #section_1 #main-btn {
-          font-size: 25px;
-          transform: translateY(300%);
-          top: 0; } }
 
 /*
   NOTE: Do not touch this file. Write the bulk of your custom styles
