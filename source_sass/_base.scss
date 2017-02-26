@@ -18,6 +18,7 @@ along with Foobar.  If not, see <http://www.gnu.org/licenses/>. **/
   font-family: $grand;
   margin-left: 5%;
   float: left;
+  font-size: 80px;
 }
 
 .accountLink{
@@ -38,7 +39,7 @@ along with Foobar.  If not, see <http://www.gnu.org/licenses/>. **/
     background-color: #d95552;
   }
 
-  background-image: url("../media/road.JPG");
+  background-image: url("../media/landing.jpg");
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -99,10 +100,15 @@ along with Foobar.  If not, see <http://www.gnu.org/licenses/>. **/
     }
 
     #introduction {
+      padding: 16%;
+      background: rgba(255,255,255,0.3);
       padding-top: 10%;
-      margin-left: 25%;
-      width: 50%;
+      /* margin-left: 25%; */
+      width: 100%;
       font-size: 25px;
+      top: 100px;
+      position: relative;
+
     }
 
     .transition {
@@ -277,6 +283,11 @@ along with Foobar.  If not, see <http://www.gnu.org/licenses/>. **/
 }
 
 .main-page{
+
+  font-family: $text;
+  h3{
+    font-family: $text;
+  }
   .main-body{
     .row{
       #map{
@@ -285,6 +296,7 @@ along with Foobar.  If not, see <http://www.gnu.org/licenses/>. **/
         //background-color: #2A363B;
       }
       .myList{
+        color:black;
         height: 100px;
         .list_item{
           height: auto;
@@ -310,6 +322,8 @@ along with Foobar.  If not, see <http://www.gnu.org/licenses/>. **/
     #searchHotelBtn {
       display:block;
       margin:auto;
+        border-radius: 3px;
+        background-color: #d95552;
     }
   }
 

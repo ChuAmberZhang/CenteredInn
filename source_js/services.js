@@ -33,7 +33,7 @@ hotelServices.factory('CommonData', function(){
     }
 });
 
-var secret ="ZPGkwBBoUtCzfTTNFDCW555e6ZNVxv1W";
+var secret ="<AmadeusAPIKey>";
 hotelServices.factory('Amadeus', function($http, $window) {
     return {
         getSpotsAPI : function(city) {

@@ -2,7 +2,7 @@ var hotelControllers = angular.module('hotelControllers', ['firebase']);
 
 // Initialize Firebase
 var config = {
-    apiKey: "AIzaSyDNFewR2r5GX-yMHSp76iqYLZe1l8QlT2k",
+    apiKey: "<FirebaseAPIKEY>",
     authDomain: "centeredinn.firebaseapp.com",
     databaseURL: "https://centeredinn.firebaseio.com",
     storageBucket: "centeredinn.appspot.com",
@@ -134,49 +134,109 @@ hotelControllers.controller('MainController', ['$scope' ,  'Amadeus', '$window' 
 
 
     function refresh(hotelIcon){
-        deleteMarkers();
-        for (var i = 0; i < $scope.spots.length; i++) {
-            console.log($scope.spots[i]);
-            var icon;
-            if(hotelIcon == true)
-                icon = '../media/hotel.png';
-            else
-                icon = '../media/spot.png';
-            addMarker($scope.spots[i],icon);
+        var icon;
+        if(hotelIcon == true){
+            for (var i = 0; i < $scope.hotels.length; i++) {
+                console.log($scope.hotels[i].details);
+                addMarker($scope.hotels[i].details,hotelIcon);
+
+
+            }
+
         }
+        else{
+            deleteMarkers();
+            for (var i = 0; i < $scope.spots.length; i++) {
+                console.log($scope.spots[i]);
+                addMarker($scope.spots[i],hotelIcon);
+            }
+
+        }
+        console.log($scope.markers.length);
         showMarkers();
+        var bounds = new google.maps.LatLngBounds();
+        for (var i = 0; i < $scope.markers.length; i++) {
+            bounds.extend($scope.markers[i].getPosition());
+        }
+
+        map.fitBounds(bounds);
     }
-    function addMarker(spot,iconLink) {
+    function addMarker(spot,hotelIcon) {
+        var iconLink;
+        if(hotelIcon){
+            iconLink = '../media/hotel.png';
+        }
+        else{
+            iconLink = '../media/spot.png';
+        }
+        console.log("add")
         var marker = new google.maps.Marker({
             position: {lat: spot.location.latitude,
                 lng: spot.location.longitude},
-            map: map,
+            map: $window.map,
             icon: iconLink
         });
+
         jQuery(document).ready(function($){
-            marker.addListener('mouseover', function($event){
-                    var str="<div style='padding:10px;'>"
-                            +"<h6>"+spot.title+"</h6>"
-                            +"<img class='col-sm-6' src='"+spot.main_image+"' alt='https://pbs.twimg.com/profile_images/600060188872155136/st4Sp6Aw.jpg' style='width:80px;height:auto;margin-bottom: 20px'>"
-                            +"</div>"
-                        ;
-                    infowindow.setContent(str);
-                    infowindow.open(map, marker);
-                    var list_item = document.getElementById("geo"+spot.geoname_id);
-                    $(list_item).css("background-color", "#a8c6e4");
+            if(hotelIcon) {
+                console.log(spot.property_name);
+                marker.addListener('mouseover', function ($event) {
+                    var imglink = '../media/hotelAlt.png';
+                    if(spot.image!=undefined){
+                        imglink = "spot.image[0]";
+                    }
+                        var str = "<div style='padding:10px;'>"
+                                + "<h6>" + spot.property_name + "</h6>"
+                                + "<img class='col-sm-6' src = '" + imglink + "' style='width:80px;height:auto;margin-bottom: 20px'>"
+                                + "</div>"
+                            ;
+                        infowindow.setContent(str);
+                        infowindow.open($window.map, marker);
+                        var list_item = document.getElementById("geo" + spot.property_name);
+                        $(list_item).css("background-color", "#a8c6e4");
 
-                }
-            );
-            marker.addListener('mouseout', function($event){
-                    infowindow.close();
-                    var list_item = document.getElementById("geo"+spot.geoname_id);
-                    $(list_item).css("background-color", "white");
+                    }
+                );
+                /*marker.addListener('mouseout', function($event){
+                        infowindow.close();
+                        var list_item = document.getElementById("geo"+spot.property_name);
+                        $(list_item).css("background-color", "white");
 
-                }
-            );
+                    }
+                );*/
+            }
+            else{
+                marker.addListener('mouseover', function ($event) {
+                    var imglink = '../media/hotelAlt.png';
+                    if(spot.main_image!=undefined){
+                        imglink = spot.main_image;
+                    }
+                        var str = "<div style='padding:10px;'>"
+                                + "<h6>" + spot.title + "</h6>"
+                                + "<img class='col-sm-6' src='" + spot.main_image + "' alt='../media/sceneAlt.png' style='width:80px;height:auto;margin-bottom: 20px'>"
+                                + "</div>"
+                            ;
+                        infowindow.setContent(str);
+                        infowindow.open($window.map, marker);
+                        var list_item = document.getElementById("geo" + spot.geoname_id);
+                        $(list_item).css("background-color", "#a8c6e4");
+
+                    }
+                );
+                marker.addListener('mouseout', function($event){
+                        infowindow.close();
+                        var list_item = document.getElementById("geo"+spot.geoname_id);
+                        $(list_item).css("background-color", "white");
+
+                    }
+                );
+            }
+
         });
 
         $scope.markers.push(marker);
+        setMapOnAll($window.map);
+        console.log($scope.markers.length);
     }
     function setMapOnAll(map) {
         for (var i = 0; i < $scope.markers.length; i++) {
@@ -255,6 +315,7 @@ hotelControllers.controller('MainController', ['$scope' ,  'Amadeus', '$window' 
                         });
                         console.log($scope.hotels);
                     }
+                    refresh(true);
                 }).error(function (data) {
                     console.log(data.message);
                 });

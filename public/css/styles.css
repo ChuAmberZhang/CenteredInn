@@ -4519,52 +4519,76 @@ table.hover tbody tr:nth-of-type(even):hover {
 .clearfix::after {
   clear: both; }
 
-/* line 2, ../../source_sass/_base.scss */
+/** This file is part of CenteredInn.
+
+    CenteredInn is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+    CenteredInn is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+along with Foobar.  If not, see <http://www.gnu.org/licenses/>. **/
+/* line 17, ../../source_sass/_base.scss */
 .top-bar h1 {
   font-family: "Grand Hotel", cursive;
-  margin-left: 5%; }
+  margin-left: 5%;
+  float: left;
+  font-size: 80px; }
 
-/* line 7, ../../source_sass/_base.scss */
+/* line 24, ../../source_sass/_base.scss */
+.accountLink {
+  font-family: "Grand Hotel", cursive;
+  font-size: 2em;
+  margin-right: 5%;
+  margin-top: -68px;
+  float: right; }
+
+/* line 32, ../../source_sass/_base.scss */
 .landing {
   width: 100%;
   margin: 0 auto;
   font-family: "Grand Hotel", cursive;
-  background-image: url("../media/road.JPG");
+  background-image: url("../media/landing.jpg");
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
   background-attachment: fixed; }
-  /* line 12, ../../source_sass/_base.scss */
+  /* line 37, ../../source_sass/_base.scss */
   .landing .button {
     border-radius: 3px;
     background-color: #d95552; }
-  /* line 24, ../../source_sass/_base.scss */
+  /* line 49, ../../source_sass/_base.scss */
   .landing #landing-main {
     border: 10px;
     height: 1200px;
     text-align: center;
     background: transparent; }
     @media screen and (max-width: 39.9375em) {
-      /* line 24, ../../source_sass/_base.scss */
+      /* line 49, ../../source_sass/_base.scss */
       .landing #landing-main {
         height: 400px; } }
     @media screen and (max-width: 39.9375em) {
-      /* line 35, ../../source_sass/_base.scss */
+      /* line 60, ../../source_sass/_base.scss */
       .landing #landing-main #tri {
         position: relative;
         top: -100px; } }
-    /* line 42, ../../source_sass/_base.scss */
+    /* line 67, ../../source_sass/_base.scss */
     .landing #landing-main .pic {
       display: none; }
-    /* line 45, ../../source_sass/_base.scss */
+    /* line 70, ../../source_sass/_base.scss */
     .landing #landing-main center {
       width: inherit;
       text-align: right;
       font-size: 90px;
       color: black;
       z-index: 100; }
-    /* line 53, ../../source_sass/_base.scss */
+    /* line 78, ../../source_sass/_base.scss */
     .landing #landing-main h4 {
       width: inherit;
       font-family: arial;
@@ -4574,22 +4598,26 @@ table.hover tbody tr:nth-of-type(even):hover {
       z-index: 100;
       transform: translateY(150%); }
       @media screen and (max-width: 63.9375em) {
-        /* line 53, ../../source_sass/_base.scss */
+        /* line 78, ../../source_sass/_base.scss */
         .landing #landing-main h4 {
           font-size: 60px;
           transform: translateY(100%); } }
       @media screen and (max-width: 39.9375em) {
-        /* line 53, ../../source_sass/_base.scss */
+        /* line 78, ../../source_sass/_base.scss */
         .landing #landing-main h4 {
           font-size: 40px;
           transform: translateY(120%); } }
-    /* line 77, ../../source_sass/_base.scss */
+    /* line 102, ../../source_sass/_base.scss */
     .landing #landing-main #introduction {
+      padding: 16%;
+      background: rgba(255, 255, 255, 0.3);
       padding-top: 10%;
-      margin-left: 25%;
-      width: 50%;
-      font-size: 25px; }
-    /* line 84, ../../source_sass/_base.scss */
+      /* margin-left: 25%; */
+      width: 100%;
+      font-size: 25px;
+      top: 100px;
+      position: relative; }
+    /* line 114, ../../source_sass/_base.scss */
     .landing #landing-main .transition {
       display: block;
       left: 0;
@@ -4598,7 +4626,7 @@ table.hover tbody tr:nth-of-type(even):hover {
       margin-bottom: 100px;
       -webkit-transform: translate3d(-50%, 0, 0);
       z-index: 2; }
-      /* line 93, ../../source_sass/_base.scss */
+      /* line 123, ../../source_sass/_base.scss */
       .landing #landing-main .transition .btn {
         background-color: #FFF;
         display: block;
@@ -4611,23 +4639,23 @@ table.hover tbody tr:nth-of-type(even):hover {
         box-shadow: 0 0 7px 0 rgba(0, 0, 0, 0.13);
         margin: -26px auto;
         text-align: center; }
-        /* line 94, ../../source_sass/_base.scss */
+        /* line 124, ../../source_sass/_base.scss */
         .landing #landing-main .transition .btn hover {
           transform: scale(1.1); }
-        /* line 106, ../../source_sass/_base.scss */
+        /* line 136, ../../source_sass/_base.scss */
         .landing #landing-main .transition .btn i {
           font-size: 30px;
           position: relative;
           top: 50%;
           transform: translateY(-50%);
           color: #2A363B; }
-      /* line 114, ../../source_sass/_base.scss */
+      /* line 144, ../../source_sass/_base.scss */
       .landing #landing-main .transition .btn:hover {
         transform: scale(1.1); }
-        /* line 116, ../../source_sass/_base.scss */
+        /* line 146, ../../source_sass/_base.scss */
         .landing #landing-main .transition .btn:hover i {
           color: #DEA5A4; }
-  /* line 126, ../../source_sass/_base.scss */
+  /* line 156, ../../source_sass/_base.scss */
   .landing .user-form {
     display: block;
     width: 40%;
@@ -4635,10 +4663,10 @@ table.hover tbody tr:nth-of-type(even):hover {
     max-width: 475px;
     background: #fff;
     position: absolute;
-    left: 30%;
+    left: 32%;
     box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.25); }
     @media (max-width: 40em) {
-      /* line 126, ../../source_sass/_base.scss */
+      /* line 156, ../../source_sass/_base.scss */
       .landing .user-form {
         width: 95%;
         position: relative;
@@ -4649,12 +4677,12 @@ table.hover tbody tr:nth-of-type(even):hover {
         -o-transform: translate(0%, 0%);
         -ms-transform: translate(0%, 0%);
         transform: translate(0%, 0%); } }
-    /* line 149, ../../source_sass/_base.scss */
+    /* line 179, ../../source_sass/_base.scss */
     .landing .user-form form {
       display: block;
       width: 100%;
       padding: 2em; }
-    /* line 155, ../../source_sass/_base.scss */
+    /* line 185, ../../source_sass/_base.scss */
     .landing .user-form h2 {
       width: 100%;
       color: lightcyan;
@@ -4668,7 +4696,7 @@ table.hover tbody tr:nth-of-type(even):hover {
       border: 1px solid #1d1d1d;
       margin: 0;
       font-weight: 200; }
-    /* line 171, ../../source_sass/_base.scss */
+    /* line 201, ../../source_sass/_base.scss */
     .landing .user-form input {
       display: block;
       font-family: "Droid Serif", serif;
@@ -4679,10 +4707,10 @@ table.hover tbody tr:nth-of-type(even):hover {
       border: none;
       border-bottom: 1px solid #eaeaea;
       color: #757575; }
-      /* line 181, ../../source_sass/_base.scss */
+      /* line 211, ../../source_sass/_base.scss */
       .landing .user-form input:focus {
         outline: none; }
-    /* line 186, ../../source_sass/_base.scss */
+    /* line 216, ../../source_sass/_base.scss */
     .landing .user-form .btn {
       display: block;
       background: #1fb5bf;
@@ -4691,16 +4719,16 @@ table.hover tbody tr:nth-of-type(even):hover {
       font-family: "Droid Serif", serif;
       color: white;
       margin: auto auto; }
-      /* line 195, ../../source_sass/_base.scss */
+      /* line 225, ../../source_sass/_base.scss */
       .landing .user-form .btn:hover {
         background: #23cad5; }
-      /* line 198, ../../source_sass/_base.scss */
+      /* line 228, ../../source_sass/_base.scss */
       .landing .user-form .btn:active {
         background: #1fb5bf; }
-      /* line 202, ../../source_sass/_base.scss */
+      /* line 232, ../../source_sass/_base.scss */
       .landing .user-form .btn:focus {
         outline: none; }
-    /* line 207, ../../source_sass/_base.scss */
+    /* line 237, ../../source_sass/_base.scss */
     .landing .user-form .switch {
       display: block;
       color: #33d3de;
@@ -4712,37 +4740,65 @@ table.hover tbody tr:nth-of-type(even):hover {
       font-size: 1em;
       margin-bottom: 2em;
       padding: 0; }
-      /* line 219, ../../source_sass/_base.scss */
+      /* line 249, ../../source_sass/_base.scss */
       .landing .user-form .switch:hover {
         color: #1ba0a9; }
-  /* line 228, ../../source_sass/_base.scss */
+  /* line 258, ../../source_sass/_base.scss */
   .landing .city-date-search {
     width: 50%;
     margin-left: 25%;
-    background-color: white; }
-    /* line 233, ../../source_sass/_base.scss */
+    background-color: white;
+    padding: 15px;
+    border-radius: 18px;
+    background: rgba(255, 255, 255, 0.5); }
+    /* line 266, ../../source_sass/_base.scss */
     .landing .city-date-search label {
       font-size: 25px; }
+    /* line 270, ../../source_sass/_base.scss */
+    .landing .city-date-search #cityChoice {
+      width: 60%;
+      margin: auto; }
+    /* line 275, ../../source_sass/_base.scss */
+    .landing .city-date-search button {
+      font-size: 25px;
+      margin-top: 5px;
+      margin-bottom: 5px; }
 
-/* line 244, ../../source_sass/_base.scss */
-.main-page .main-body .row #map {
-  height: 600px; }
-/* line 249, ../../source_sass/_base.scss */
-.main-page .main-body .row .myList {
-  height: 100px; }
-  /* line 251, ../../source_sass/_base.scss */
-  .main-page .main-body .row .myList .list_item {
-    height: auto;
-    border-style: solid;
-    border-width: 1px;
-    /*          .selectedItem{
-                background-color: #a8c6e4;
-              }*/ }
-    /* line 255, ../../source_sass/_base.scss */
-    .main-page .main-body .row .myList .list_item:hover {
-      background-color: #a8c6e4;
-      zoom: 1.1;
-      transition: background-color 0.3s, zoom 5s; }
+/* line 285, ../../source_sass/_base.scss */
+.main-page {
+  font-family: "Droid Serif", serif; }
+  /* line 288, ../../source_sass/_base.scss */
+  .main-page h3 {
+    font-family: "Droid Serif", serif; }
+  /* line 293, ../../source_sass/_base.scss */
+  .main-page .main-body .row #map {
+    height: 600px; }
+  /* line 298, ../../source_sass/_base.scss */
+  .main-page .main-body .row .myList {
+    color: black;
+    height: 100px; }
+    /* line 301, ../../source_sass/_base.scss */
+    .main-page .main-body .row .myList .list_item {
+      height: auto;
+      border-style: solid;
+      border-width: 1px;
+      /*          .selectedItem{
+                  background-color: #a8c6e4;
+                }*/ }
+      /* line 305, ../../source_sass/_base.scss */
+      .main-page .main-body .row .myList .list_item:hover {
+        background-color: #a8c6e4;
+        zoom: 1.1;
+        transition: background-color 0.3s, zoom 5s; }
+  /* line 320, ../../source_sass/_base.scss */
+  .main-page #searchBtnWrapper {
+    margin: 15px; }
+    /* line 322, ../../source_sass/_base.scss */
+    .main-page #searchBtnWrapper #searchHotelBtn {
+      display: block;
+      margin: auto;
+      border-radius: 3px;
+      background-color: #d95552; }
 
 /*
   NOTE: Do not touch this file. Write the bulk of your custom styles

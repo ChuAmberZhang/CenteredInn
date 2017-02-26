@@ -1,5 +1,5 @@
 <div class="main-page" ng-controller='MainController'>
-    <button class="accountLink"">My Account</button>
+    <button class="accountLink">My Account</button>
     <!--<header>
         <button class='del button' ng-click="getSpots('New York','')"><i class="fa fa-minus" aria-hidden="true"></i></button>
     </header>-->
@@ -16,15 +16,21 @@
         <div class="row">
 
             <div class="myList large-3 columns">
-                Suggested Spots
-                <ul class=" spotsList"  >
+                <h3>Suggested Spots</h3>
+                <ul class="accordion hotelsList" data-accordion role="tablist" data-multiple-opened="false" data-allow-all-closed="true">
                     <li class="list-item no-bullet" ng-repeat="spot in spots track by $index">
-                        <div id ="{{$index}}">
-                        <a href="" role="tab"  ng-click="expand()">
-                            <h5>{{spot.title}}</h5>
-                        </a>
-                            <input type="checkbox" ng-model="spot.selected" class="spotsCheckbox">
+                        <div id ="geo{{spot.geoname_id}}">
+                            <span><a href="" role="tab" class="accordion-title" >
+                                <h5>{{spot.title}}</h5>
+                            </a>
+                                <input type="checkbox" ng-model="spot.selected" class="spotsCheckbox">
+                                </span>
+
+                            <div  class="accordion-content" role="tabpanel" data-tab-content >
+
+                            </div>
                         </div>
+
                     </li>
                 </ul>
             </div>
@@ -33,9 +39,10 @@
             </div>
 
             <div class="myList large-3 columns">
-                Hotels
+                <h3>Hotels</h3>
                 <ul class="accordion hotelsList" data-accordion role="tablist" data-multiple-opened="false" data-allow-all-closed="true">
                     <li class="accordion-item" ng-repeat="hotel in hotels track by $index">
+                        <div id ="geo{{hotel.details.property_name}}" >
                         <a href="" role="tab" class="accordion-title" >
                             <h5>{{hotel.details.property_name}}</h5>
                             <h6>Near {{hotel.count}} of your selected destinations!</h6>
@@ -43,6 +50,8 @@
                         <div  class="accordion-content" role="tabpanel" data-tab-content >
                             questions.answer
                         </div>
+                        </div>
+
                     </li>
                 </ul>
             </div>
