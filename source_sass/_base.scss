@@ -1,32 +1,44 @@
 // Add any custom Sass & CSS here
+.top-bar h1{
+  font-family: $grand;
+  margin-left: 5%;
+}
+
 .landing{
   width:100%;
   margin: 0 auto;
-  font-family: $text;
+  font-family: $grand;
 
   .button{
     border-radius: 3px;
     background-color: #d95552;
   }
 
+  background-image: url("../media/road.JPG");
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  background-attachment: fixed;
 
   #landing-main{
-    position: relative;
+    //position: relative;
     border: 10px;
-    height: 650px;
+    height: 1000px;
     text-align: center;
-    background-image: url("../media/road.JPG");
-    background-size: cover;
+    background: transparent;
 
     @include breakpoint(small down){
       height: 400px;
     }
+
     #tri{
       @include breakpoint(small down){
         position: relative;
         top: -100px;
       }
     }
+
     .pic{
       display: none;
     }
@@ -62,85 +74,167 @@
 
     }
 
-    #main-btn{
-      margin-top: 300px;
-      width: inherit;
-      text-align: center;
-      font-family: $font-head;
-      position: relative;
-      font-size: $size-mid;
-      color: white;
-      z-index: 100;
-      //transform: translateY(250%);
-      span {
-        input {
-          width: 40%;
-          height: 45px;
-          border-radius: 7px;
-          //transform: translateY(400%);
-        }
-        .button {
-          background-color: $red;
-          box-shadow: 0 0 7px 0 rgba(0, 0, 0, .13);
-          border-radius: 200px;
+    #introduction {
+      padding-top: 10%;
+      margin-left: 25%;
+      width: 50%;
+      font-size: 25px;
+    }
+
+    .transition {
+      display:block;
+      left: 0;
+      margin-left: 50%;
+      margin-top: 100px;
+      margin-bottom: 100px;
+      -webkit-transform: translate3d(-50%,0,0);
+      z-index: 2;
+
+      .btn {
+        hover { transform: scale(1.1); }
+        background-color: #FFF;
+        display: block;
+        width: 52px;
+        height: 52px;
+        -webkit-transition: fill .3s ease-in-out, transform .3s ease-in-out, color .3s ease-in-out;
+        -o-transition: fill .3s ease-in-out, transform .3s ease-in-out, color .3s ease-in-out;
+        transition: fill .3s ease-in-out, transform .3s ease-in-out, color .3s ease-in-out;
+        border-radius: 50%;
+        box-shadow: 0 0 7px 0 rgba(0, 0, 0, .13);
+        margin: -26px auto;
+        text-align: center;
+        i{
+          font-size: 30px;
           position: relative;
-          transform: translateY(13%);
-        }
-        .button:hover {
-          background-color: #C6514B;
+          top: 50%;
+          transform: translateY(-50%);
+          color:$offblack;
         }
       }
-      @include breakpoint(medium down) {
-        font-size: 45px;
-        //transform: translateY(380%);
-        top: 0;
-      }
-      @include breakpoint(small down) {
-        font-size: 25px;
-        //transform: translateY(300%);
-        top: 0;
+      .btn:hover {
+        transform: scale(1.1);
+        i{
+          color:$pink;
+        }
+
       }
     }
 
   }
 
 
-  .transition {
-    left: 0;
-    margin-left: 50%;
+  .user-form {
+    display:block;
+    width: 40%;
+    min-width: 320px;
+    max-width: 475px;
+    background: #fff;
     position: absolute;
-    -webkit-transform: translate3d(-50%,0,0);
-    z-index: 2;
+    left: 30%;
+
+    box-shadow: 0px 2px 5px rgba(0,0,0,.25);
+
+    @media(max-width: 40em){
+      width: 95%;
+      position: relative;
+      margin: 2.5% auto 0 auto;
+      left: 0%;
+      -webkit-transform: translate(0%,0%);
+      -moz-transform: translate(0%,0%);
+      -o-transform: translate(0%,0%);
+      -ms-transform: translate(0%,0%);
+      transform: translate(0%,0%);
+    }
+
+    form {
+      display: block;
+      width: 100%;
+      padding: 2em;
+    }
+
+    h2 {
+      width: 100%;
+      color: lightcyan;
+      font-family: $text;
+      font-size: 1.35em;
+      display: block;
+      background:#2a2a2a;
+      width: 100%;
+      text-transform: uppercase;
+      padding: .75em 1em .75em 1.5em;
+      border: 1px solid darken(#2a2a2a, 5%);
+      //text-shadow: 0px 1px 1px darken(@grey, 5%);
+      margin: 0;
+      font-weight: 200;
+    }
+
+    input {
+      display: block;
+      font-family: $text;
+      margin: auto auto;
+      width: 100%;
+      margin-bottom: 1.5em;
+      padding: .5em .5em;
+      border: none;
+      border-bottom: 1px solid #eaeaea;
+      color: #757575;
+      &:focus {
+        outline: none;
+      }
+    }
 
     .btn {
-      hover { transform: scale(1.1); }
-      background-color: #FFF;
       display: block;
-      width: 52px;
-      height: 52px;
-      -webkit-transition: fill .3s ease-in-out, transform .3s ease-in-out, color .3s ease-in-out;
-      -o-transition: fill .3s ease-in-out, transform .3s ease-in-out, color .3s ease-in-out;
-      transition: fill .3s ease-in-out, transform .3s ease-in-out, color .3s ease-in-out;
-      border-radius: 50%;
-      box-shadow: 0 0 7px 0 rgba(0, 0, 0, .13);
-      margin: -26px auto;
-      text-align: center;
-      i{
-        font-size: 30px;
-        position: relative;
-        top: 50%;
-        transform: translateY(-50%);
-        color:$offblack;
+      background:#1fb5bf;
+      border: 1px solid darken(#1fb5bf, 5%);
+      padding: .5em 2em;
+      font-family: $text;
+      color: white;
+      margin: auto auto;
+
+      &:hover {
+        background: lighten(#1fb5bf, 5%);
+      }
+      &:active {
+        background:#1fb5bf;
+
+      }
+      &:focus {
+        outline: none;
       }
     }
-    .btn:hover {
-      transform: scale(1.1);
-      i{
-        color:$pink;
-      }
 
+    .switch {
+      display: block;
+      color: lighten(#1fb5bf, 10%);
+      line-height: .5em;
+      position: relative;
+      top: 1.5em;
+      text-decoration: none;
+      font-family:$text;
+      font-size: 1em;
+      margin-bottom: 2em;
+      padding: 0;
+
+      &:hover {
+        color:darken(#1fb5bf, 5%);
+      }
+      &:active{
+      }
+    }
+
+  }
+
+  .city-date-search {
+    width: 50%;
+    margin-left: 25%;
+    background-color: white;
+
+    label {
+      font-size: 25px;
     }
   }
+
 
 }
 

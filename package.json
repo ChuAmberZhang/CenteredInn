@@ -8,6 +8,7 @@
   ],
   "dependencies": {
     "angular2-google-maps": "^0.17.0",
+    "angularfire": "^2.3.0",
     "angularjs-datepicker": "^2.1.6",
     "express": "^4.11.1",
     "grunt": "~0.4.2",

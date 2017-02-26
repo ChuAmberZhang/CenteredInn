@@ -4,23 +4,58 @@
     </header>
     <div id="map"></div>
     <div id = "landing-main">
-        <h4 style="text-align: center" >Where is your destination
 
-
-        </h4>
         <!--<input id="search" ng-model="text" spellcheck="false" maxlength="64" ng-enter="search()">-->
-        <div id="main-btn" >
 
-            <span>
-            <input id="search" ng-model="text" spellcheck="false" maxlength="64" ng-enter="search()">
-                <a class="button" href="#/main">Get started</a>
+        <div id="introduction">
+            <p>
+                For those who love traveling, finding the best hotel or inn to stay in can make a trip much more convenient and enjoyable.
+            </p>
+            <p>
+                Find the best hotels according to their proximity to the destinations of your dreams! Just pick a city, select the points of interests you would like to visit, and we'll have a list of perfect hotels for you!
+            </p>
+            <button id="start-btn">Log In to Start</button>
 
-            </span>
         </div>
 
+        <div class="transition">
+            <div class="btn" id = "scroll_"><i class="fa fa-angle-double-down" aria-hidden="true"></i></div>
+        </div>
 
+        <div class="user-form" ng-if="!loggedIn">
+            <h2>Welcome</h2>
+            <form>
+                <div ng-if="isLogin">
+                    <input type="email" title="email" placeholder="email" ng-model="login.email"/>
+                    <input type="password" title="password" placeholder="password" ng-model="login.pwd"/>
+                </div>
+                <div ng-if="!isLogin">
+                    <input type="text" title="username" placeholder="username" ng-model="signup.name"/>
+                    <input type="email" title="email" placeholder="email" ng-model="signup.email"/>
+                    <input type="password" title="password" placeholder="password" ng-model="signup.pwd"/>
+                </div>
+                <a ng-init="failed=false" ng-if="loginFailed">{{login.failMessage}}</a>
+                <button type="submit" class="btn" ng-click="login($event)">{{buttonLabel}}</button>
+                <a class="switch" ng-click="switch($event)">{{switchMessage}}</a>
+            </form>
+        </div><!--end user form -->
+
+        <div class="city-date-search" ng-if="loggedIn">
+            <form>
+                <label>Start Date</label>
+                <datepicker date-format="MMMM d, y" date-month-title="selected title">
+                    <input ng-model="search.start" ng-bind="search.start">
+                </datepicker>
+                <label>End Date</label>
+                <datepicker date-format="MMMM d, y" date-month-title="selected title">
+                    <input ng-model="search.end" ng-bind="search.end">
+                </datepicker>
+                <label>What is you destination city?</label>
+                <input type="text" title="city" placeholder="Destination city" ng-model="search.city"/>
+                <button type="submit" class="btn" ng-click="searchSpots($event)">Search</button>
+            </form>
+        </div>
     </div>
-    <div class="transition">
-        <div class="btn" id = "scroll_"><i class="fa fa-angle-double-down" aria-hidden="true"></i></div>
+
     </div>
 </div>

@@ -4520,42 +4520,51 @@ table.hover tbody tr:nth-of-type(even):hover {
   clear: both; }
 
 /* line 2, ../../source_sass/_base.scss */
+.top-bar h1 {
+  font-family: "Grand Hotel", cursive;
+  margin-left: 5%; }
+
+/* line 7, ../../source_sass/_base.scss */
 .landing {
   width: 100%;
   margin: 0 auto;
-  font-family: "Droid Serif", serif; }
-  /* line 7, ../../source_sass/_base.scss */
+  font-family: "Grand Hotel", cursive;
+  background-image: url("../media/road.JPG");
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  background-attachment: fixed; }
+  /* line 12, ../../source_sass/_base.scss */
   .landing .button {
     border-radius: 3px;
     background-color: #d95552; }
-  /* line 13, ../../source_sass/_base.scss */
+  /* line 24, ../../source_sass/_base.scss */
   .landing #landing-main {
-    position: relative;
     border: 10px;
-    height: 650px;
+    height: 1000px;
     text-align: center;
-    background-image: url("../media/road.JPG");
-    background-size: cover; }
+    background: transparent; }
     @media screen and (max-width: 39.9375em) {
-      /* line 13, ../../source_sass/_base.scss */
+      /* line 24, ../../source_sass/_base.scss */
       .landing #landing-main {
         height: 400px; } }
     @media screen and (max-width: 39.9375em) {
-      /* line 24, ../../source_sass/_base.scss */
+      /* line 35, ../../source_sass/_base.scss */
       .landing #landing-main #tri {
         position: relative;
         top: -100px; } }
-    /* line 30, ../../source_sass/_base.scss */
+    /* line 42, ../../source_sass/_base.scss */
     .landing #landing-main .pic {
       display: none; }
-    /* line 33, ../../source_sass/_base.scss */
+    /* line 45, ../../source_sass/_base.scss */
     .landing #landing-main center {
       width: inherit;
       text-align: right;
       font-size: 90px;
       color: black;
       z-index: 100; }
-    /* line 41, ../../source_sass/_base.scss */
+    /* line 53, ../../source_sass/_base.scss */
     .landing #landing-main h4 {
       width: inherit;
       font-family: arial;
@@ -4565,86 +4574,155 @@ table.hover tbody tr:nth-of-type(even):hover {
       z-index: 100;
       transform: translateY(150%); }
       @media screen and (max-width: 63.9375em) {
-        /* line 41, ../../source_sass/_base.scss */
+        /* line 53, ../../source_sass/_base.scss */
         .landing #landing-main h4 {
           font-size: 60px;
           transform: translateY(100%); } }
       @media screen and (max-width: 39.9375em) {
-        /* line 41, ../../source_sass/_base.scss */
+        /* line 53, ../../source_sass/_base.scss */
         .landing #landing-main h4 {
           font-size: 40px;
           transform: translateY(120%); } }
-    /* line 65, ../../source_sass/_base.scss */
-    .landing #landing-main #main-btn {
-      margin-top: 300px;
-      width: inherit;
-      text-align: center;
-      font-family: arial;
-      position: relative;
-      font-size: 60px;
-      color: white;
-      z-index: 100; }
-      /* line 76, ../../source_sass/_base.scss */
-      .landing #landing-main #main-btn span input {
-        width: 40%;
-        height: 45px;
-        border-radius: 7px; }
-      /* line 82, ../../source_sass/_base.scss */
-      .landing #landing-main #main-btn span .button {
-        background-color: #FF847C;
-        box-shadow: 0 0 7px 0 rgba(0, 0, 0, 0.13);
-        border-radius: 200px;
-        position: relative;
-        transform: translateY(13%); }
-      /* line 89, ../../source_sass/_base.scss */
-      .landing #landing-main #main-btn span .button:hover {
-        background-color: #C6514B; }
-      @media screen and (max-width: 63.9375em) {
-        /* line 65, ../../source_sass/_base.scss */
-        .landing #landing-main #main-btn {
-          font-size: 45px;
-          top: 0; } }
-      @media screen and (max-width: 39.9375em) {
-        /* line 65, ../../source_sass/_base.scss */
-        .landing #landing-main #main-btn {
-          font-size: 25px;
-          top: 0; } }
-  /* line 108, ../../source_sass/_base.scss */
-  .landing .transition {
-    left: 0;
-    margin-left: 50%;
-    position: absolute;
-    -webkit-transform: translate3d(-50%, 0, 0);
-    z-index: 2; }
-    /* line 115, ../../source_sass/_base.scss */
-    .landing .transition .btn {
-      background-color: #FFF;
+    /* line 77, ../../source_sass/_base.scss */
+    .landing #landing-main #introduction {
+      padding-top: 10%;
+      margin-left: 25%;
+      width: 50%;
+      font-size: 25px; }
+    /* line 84, ../../source_sass/_base.scss */
+    .landing #landing-main .transition {
       display: block;
-      width: 52px;
-      height: 52px;
-      -webkit-transition: fill .3s ease-in-out, transform .3s ease-in-out, color .3s ease-in-out;
-      -o-transition: fill .3s ease-in-out, transform .3s ease-in-out, color .3s ease-in-out;
-      transition: fill .3s ease-in-out, transform .3s ease-in-out, color .3s ease-in-out;
-      border-radius: 50%;
-      box-shadow: 0 0 7px 0 rgba(0, 0, 0, 0.13);
-      margin: -26px auto;
-      text-align: center; }
-      /* line 116, ../../source_sass/_base.scss */
-      .landing .transition .btn hover {
+      left: 0;
+      margin-left: 50%;
+      margin-top: 100px;
+      margin-bottom: 100px;
+      -webkit-transform: translate3d(-50%, 0, 0);
+      z-index: 2; }
+      /* line 93, ../../source_sass/_base.scss */
+      .landing #landing-main .transition .btn {
+        background-color: #FFF;
+        display: block;
+        width: 52px;
+        height: 52px;
+        -webkit-transition: fill .3s ease-in-out, transform .3s ease-in-out, color .3s ease-in-out;
+        -o-transition: fill .3s ease-in-out, transform .3s ease-in-out, color .3s ease-in-out;
+        transition: fill .3s ease-in-out, transform .3s ease-in-out, color .3s ease-in-out;
+        border-radius: 50%;
+        box-shadow: 0 0 7px 0 rgba(0, 0, 0, 0.13);
+        margin: -26px auto;
+        text-align: center; }
+        /* line 94, ../../source_sass/_base.scss */
+        .landing #landing-main .transition .btn hover {
+          transform: scale(1.1); }
+        /* line 106, ../../source_sass/_base.scss */
+        .landing #landing-main .transition .btn i {
+          font-size: 30px;
+          position: relative;
+          top: 50%;
+          transform: translateY(-50%);
+          color: #2A363B; }
+      /* line 114, ../../source_sass/_base.scss */
+      .landing #landing-main .transition .btn:hover {
         transform: scale(1.1); }
-      /* line 128, ../../source_sass/_base.scss */
-      .landing .transition .btn i {
-        font-size: 30px;
+        /* line 116, ../../source_sass/_base.scss */
+        .landing #landing-main .transition .btn:hover i {
+          color: #DEA5A4; }
+  /* line 126, ../../source_sass/_base.scss */
+  .landing .user-form {
+    display: block;
+    width: 40%;
+    min-width: 320px;
+    max-width: 475px;
+    background: #fff;
+    position: absolute;
+    left: 30%;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.25); }
+    @media (max-width: 40em) {
+      /* line 126, ../../source_sass/_base.scss */
+      .landing .user-form {
+        width: 95%;
         position: relative;
-        top: 50%;
-        transform: translateY(-50%);
-        color: #2A363B; }
-    /* line 136, ../../source_sass/_base.scss */
-    .landing .transition .btn:hover {
-      transform: scale(1.1); }
-      /* line 138, ../../source_sass/_base.scss */
-      .landing .transition .btn:hover i {
-        color: #DEA5A4; }
+        margin: 2.5% auto 0 auto;
+        left: 0%;
+        -webkit-transform: translate(0%, 0%);
+        -moz-transform: translate(0%, 0%);
+        -o-transform: translate(0%, 0%);
+        -ms-transform: translate(0%, 0%);
+        transform: translate(0%, 0%); } }
+    /* line 149, ../../source_sass/_base.scss */
+    .landing .user-form form {
+      display: block;
+      width: 100%;
+      padding: 2em; }
+    /* line 155, ../../source_sass/_base.scss */
+    .landing .user-form h2 {
+      width: 100%;
+      color: lightcyan;
+      font-family: "Droid Serif", serif;
+      font-size: 1.35em;
+      display: block;
+      background: #2a2a2a;
+      width: 100%;
+      text-transform: uppercase;
+      padding: .75em 1em .75em 1.5em;
+      border: 1px solid #1d1d1d;
+      margin: 0;
+      font-weight: 200; }
+    /* line 171, ../../source_sass/_base.scss */
+    .landing .user-form input {
+      display: block;
+      font-family: "Droid Serif", serif;
+      margin: auto auto;
+      width: 100%;
+      margin-bottom: 1.5em;
+      padding: .5em .5em;
+      border: none;
+      border-bottom: 1px solid #eaeaea;
+      color: #757575; }
+      /* line 181, ../../source_sass/_base.scss */
+      .landing .user-form input:focus {
+        outline: none; }
+    /* line 186, ../../source_sass/_base.scss */
+    .landing .user-form .btn {
+      display: block;
+      background: #1fb5bf;
+      border: 1px solid #1ba0a9;
+      padding: .5em 2em;
+      font-family: "Droid Serif", serif;
+      color: white;
+      margin: auto auto; }
+      /* line 195, ../../source_sass/_base.scss */
+      .landing .user-form .btn:hover {
+        background: #23cad5; }
+      /* line 198, ../../source_sass/_base.scss */
+      .landing .user-form .btn:active {
+        background: #1fb5bf; }
+      /* line 202, ../../source_sass/_base.scss */
+      .landing .user-form .btn:focus {
+        outline: none; }
+    /* line 207, ../../source_sass/_base.scss */
+    .landing .user-form .switch {
+      display: block;
+      color: #33d3de;
+      line-height: .5em;
+      position: relative;
+      top: 1.5em;
+      text-decoration: none;
+      font-family: "Droid Serif", serif;
+      font-size: 1em;
+      margin-bottom: 2em;
+      padding: 0; }
+      /* line 219, ../../source_sass/_base.scss */
+      .landing .user-form .switch:hover {
+        color: #1ba0a9; }
+  /* line 228, ../../source_sass/_base.scss */
+  .landing .city-date-search {
+    width: 50%;
+    margin-left: 25%;
+    background-color: white; }
+    /* line 233, ../../source_sass/_base.scss */
+    .landing .city-date-search label {
+      font-size: 25px; }
 
 /* line 150, ../../source_sass/_base.scss */
 .main-page .main-body .row #map {

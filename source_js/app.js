@@ -1,12 +1,12 @@
-var app = angular.module('hotel', ['ngRoute', 'hotelControllers', 'hotelServices','720kb.datepicker']);
+var app = angular.module('hotel', ['ngRoute', 'hotelControllers', 'firebase', 'hotelServices','720kb.datepicker']);
 
 app.config(['$routeProvider', function($routeProvider) {
-  $routeProvider.
+    $routeProvider.
 
-  when('/settings', {
-    templateUrl: 'partials/settings.html',
-    controller: 'SettingsController'
-  }).
+    when('/settings', {
+      templateUrl: 'partials/settings.html',
+      controller: 'SettingsController'
+    }).
 
   when('/task/:_id', {
     templateUrl: 'partials/task.html',
@@ -17,7 +17,7 @@ app.config(['$routeProvider', function($routeProvider) {
       controller: 'MainController'
   }).
 
-  otherwise({
-    redirectTo: '/settings'
-  });
+    otherwise({
+     redirectTo: '/settings'
+   });
 }]);
