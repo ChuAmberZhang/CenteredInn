@@ -6,6 +6,7 @@
 * Amadeus Technology Innovation Sandbox API: https://sandbox.amadeus.com/api-catalog
 * Firebase documentation: https://firebase.google.com/docs/
 * Angularfire Github repo: https://github.com/firebase/angularfire/
+* Google Maps API documentation: https://developers.google.com/maps/
 * bugs: good old browser inspecter. For testing api calls, PostMan. 
 * communcations: email us at chzng100@illinois.edu or wyi6@illinois.edu
 ## Testing
