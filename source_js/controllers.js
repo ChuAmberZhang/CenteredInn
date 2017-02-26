@@ -10,9 +10,9 @@ var config = {
 };
 firebase.initializeApp(config);
 
-hotelControllers.controller('SettingsController', ['$scope' , '$window' , '$firebaseAuth', function($scope, $window, $firebaseAuth) {
+hotelControllers.controller('SettingsController', ['$scope' , '$window' , '$location', '$firebaseAuth', 'CommonData', function($scope, $window, $location, $firebaseAuth, CommonData) {
 
-    $scope.loggedIn = false;
+    $scope.loggedIn = true;
     $scope.isLogin = true;
     $scope.failed = false;
     $scope.switchMessage = "New user? Sign up here!";
@@ -46,6 +46,7 @@ hotelControllers.controller('SettingsController', ['$scope' , '$window' , '$fire
             $scope.authObj.$signInWithEmailAndPassword(email, password).then(function(firebaseUser) {
                 console.log("Signed in as:", firebaseUser.uid);
                 $scope.loggedIn = true;
+                $window.sessionStorage.setItem("uid", firebaseUser.uid);
             }).catch(function(error) {
                 console.error("Authentication failed:", error);
                 $scope.failed = true;
@@ -60,6 +61,7 @@ hotelControllers.controller('SettingsController', ['$scope' , '$window' , '$fire
                 .then(function(firebaseUser) {
                     console.log("User " + firebaseUser.uid + " " + username + " created successfully!");
                     $scope.loggedIn = true;
+                    $window.sessionStorage.setItem("uid", firebaseUser.uid);
                 }).catch(function(error) {
                 console.error("Error: ", error);
                 $scope.failed = true;
@@ -73,13 +75,15 @@ hotelControllers.controller('SettingsController', ['$scope' , '$window' , '$fire
         //console.log($scope.search.start);
         //console.log($scope.search.end);
         var city = $scope.search.city;
-        console.log(city)
-        console.log($scope.search.start);
-        console.log($scope.search.end);
+        CommonData.setCity(city);
+        CommonData.setStartDate($scope.search.start);
+        CommonData.setEndDate($scope.search.end);
+        //need validation before redirecting pages
+        $location.path("/main");
     }
 }]);
 
-hotelControllers.controller('MainController', ['$scope' , '$window' , 'Amadeus', function($scope, Amadeus,$window) {
+hotelControllers.controller('MainController', ['$scope' , '$window' , 'Amadeus', 'CommonData', function($scope, Amadeus,$window, CommonData) {
     $window.map = new google.maps.Map(document.getElementById('map'), {
         center: {
             lat: -34.397,
@@ -87,6 +91,12 @@ hotelControllers.controller('MainController', ['$scope' , '$window' , 'Amadeus',
         },
         zoom: 8
     });
+
+    //console.log(CommonData.getCity());
+    var cityParam = CommonData.getCity();
+    var startParam = CommonData.getStartDate();
+    var endParam = CommonData.getEndDate();
+
     $scope.spots=[{
         "name": "The Great Wall"
 

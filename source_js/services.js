@@ -1,15 +1,28 @@
 var hotelServices = angular.module('hotelServices', []);
 
 hotelServices.factory('CommonData', function(){
-    var data = "";
+    var city = "";
+    var startDate = "";
+    var endDate = "";
     return{
-        getData : function(){
-            return data;
+        getCity : function(){
+            return city;
         },
-        setData : function(newData){
-            data = newData;
+        getStartDate : function(){
+            return startDate;
+        },
+        getEndDate : function(){
+            return endDate;
+        },
+        setCity : function(newData){
+            city = newData;
+        },
+        setStartDate : function(newData){
+            startDate = newData;
+        },
+        setEndDate : function(newData){
+            endDate = newData;
         }
-
     }
 });
 var secret ="ZPGkwBBoUtCzfTTNFDCW555e6ZNVxv1W";
