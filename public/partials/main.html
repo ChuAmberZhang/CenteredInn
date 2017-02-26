@@ -1,6 +1,6 @@
 <div class="main-page" ng-controller='MainController'>
     <header>
-        <button class='del button' ng-click="getSpots('New York')"><i class="fa fa-minus" aria-hidden="true"></i></button>
+        <button class='del button' ng-click="getSpots('New York','museum')"><i class="fa fa-minus" aria-hidden="true"></i></button>
     </header>
 
     <div class= "main-body">
@@ -11,12 +11,12 @@
         <div class="row">
             <div class="myList large-3 columns">
                 <ul class="accordion spotsList" data-accordion role="tablist" data-multiple-opened="false" data-allow-all-closed="true">
-                    <li class="accordion-item" ng-repeat="spot in spots">
-                        <a href="" role="tab" class="accordion-title" >
-                            <h5>{{spot.name}}</h5>
+                    <li class="accordion-item" ng-repeat="spot in spots track by $index">
+                        <a href="" role="tab" class="accordion-title" ng-click="expand()">
+                            <h5>{{spot.title}}</h5>
                         </a>
                         <div  class="accordion-content" role="tabpanel" data-tab-content >
-                             questions.answer
+                             <img src="{{spot.main_image}}"style="height:60px; width:60px">
                         </div>
                     </li>
                 </ul>
@@ -26,7 +26,7 @@
             </div>
             <div class="myList large-3 columns">
                 <ul class="accordion hotelsList" data-accordion role="tablist" data-multiple-opened="false" data-allow-all-closed="true">
-                    <li class="accordion-item" ng-repeat="hotel in hotels">
+                    <li class="accordion-item" ng-repeat="hotel in hotels track by $index">
                         <a href="" role="tab" class="accordion-title" >
                             <h5>{{hotel.name}}</h5>
                         </a>

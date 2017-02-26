@@ -83,49 +83,68 @@ hotelControllers.controller('SettingsController', ['$scope' , '$window' , '$loca
     }
 }]);
 
-hotelControllers.controller('MainController', ['$scope' , '$window' , 'Amadeus', 'CommonData', function($scope, Amadeus,$window, CommonData) {
+hotelControllers.controller('MainController', ['$scope' ,  'Amadeus', '$window' ,'CommonData', function($scope, Amadeus,$window, CommonData) {
+    $scope.markers = [];
+    $scope.currCity;
     $window.map = new google.maps.Map(document.getElementById('map'), {
         center: {
-            lat: -34.397,
-            lng: 150.644
+            lat: 40.1147412,
+            lng: -88.3471495
         },
         zoom: 8
     });
+    $scope.spots=new Array(10);
+    $scope.hotels=new Array(10);
 
     //console.log(CommonData.getCity());
     var cityParam = CommonData.getCity();
     var startParam = CommonData.getStartDate();
     var endParam = CommonData.getEndDate();
 
-    $scope.spots=[{
-        "name": "The Great Wall"
 
-    },{
-        "name": "Tokyo Tower"
-    }];
-    $scope.hotels=[{
-        "name": "Hilton"
 
-    },{
-        "name": "Marriot"
-    }];
+    $scope.getSpots = function(city, cate) {
+        console.log(city,cate);
+        Amadeus.getSpotsAPI(city,cate).success(function (data) {
+            $scope.spots = data.points_of_interest;
+            $scope.currCity = data.current_city;
+            $window.map = new google.maps.Map(document.getElementById('map'), {
+                center: {
+                    lat:$scope.currCity.location.latitude,
+                    lng:$scope.currCity.location.longitude
+                },
+                zoom: 9
+            });
+            for(var i=0; i<10; i++) {
+                var marker = new google.maps.Marker({
+                    position: {
+                        lat: $scope.spots[i].location.latitude,
+                        lng: $scope.spots[i].location.longitude
+                    },
+                    map: map
+                });
+                $scope.markers.push(marker);
+                marker.setMap($window.map);
+            }
 
-    $scope.getSpots = function(city) {
-        console.log(city);
-        //return;
-        Amadeus.getSpotsAPI(city).success(function (data) {
-            //getTen();
+
         }).error(function (data) {
+
             $scope.spots = data.message;
         });
     }
-
+    $('a').on('click', function(e) {
+        console.log($(this).parents());
+    });
+    $scope.expand = function(){
+        //console.log($(this).parents());
+    }
     window.onload = function() {
         $('.accordion').foundation();
-        $('a', '.accordion-item').on('click', function(e) {
-            console.log(e.target, e.currentTarget);
-        });
+
     }
+
+
 
 }]);
 

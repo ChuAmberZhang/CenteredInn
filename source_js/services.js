@@ -28,11 +28,13 @@ hotelServices.factory('CommonData', function(){
 var secret ="ZPGkwBBoUtCzfTTNFDCW555e6ZNVxv1W";
 hotelServices.factory('Amadeus', function($http, $window) {
     return {
-        getSpotsAPI : function() {
-            var city = "New%20York";
-            var baseUrl = "https://api.sandbox.amadeus.com/v1.2/points-of-interest/yapq-search-text?city_name="+city+"&image_size=small&category=zoo&;apikey="+secret;
+        getSpotsAPI : function(city,cate) {
+
+            var baseUrl = "https://api.sandbox.amadeus.com/v1.2/points-of-interest/yapq-search-text?apikey="+secret+"&city_name="
+            +city+"&category="
+            +cate+"&number_of_images=1&number_of_results=2";
             console.log(baseUrl);
-            return "ads"//;$http.get(baseUrl+'/api/users');
+            return $http.get(baseUrl);
         }
     }
 });
