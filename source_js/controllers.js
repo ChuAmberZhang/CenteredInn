@@ -10,9 +10,11 @@ var config = {
 };
 firebase.initializeApp(config);
 
-hotelControllers.controller('SettingsController', ['$scope' , '$window' , '$location', '$firebaseAuth', 'CommonData', function($scope, $window, $location, $firebaseAuth, CommonData) {
+hotelControllers.controller('SettingsController', ['$scope' , '$window' , '$location', '$firebaseAuth', 'CommonData',
+    function($scope, $window, $location, $firebaseAuth, CommonData) {
 
-    $scope.loggedIn = true;
+
+    $scope.loggedIn = false;
     $scope.isLogin = true;
     $scope.failed = false;
     $scope.switchMessage = "New user? Sign up here!";
@@ -44,7 +46,7 @@ hotelControllers.controller('SettingsController', ['$scope' , '$window' , '$loca
             $scope.authObj.$signInWithEmailAndPassword(email, password).then(function(firebaseUser) {
                 console.log("Signed in as:", firebaseUser.uid);
                 $scope.loggedIn = true;
-                $window.sessionStorage.setItem("uid", firebaseUser.uid);
+                CommonData.setUID(firebaseUser.uid);
             }).catch(function(error) {
                 console.error("Authentication failed:", error);
                 $scope.failed = true;
@@ -59,7 +61,7 @@ hotelControllers.controller('SettingsController', ['$scope' , '$window' , '$loca
                 .then(function(firebaseUser) {
                     console.log("User " + firebaseUser.uid + " " + username + " created successfully!");
                     $scope.loggedIn = true;
-                    $window.sessionStorage.setItem("uid", firebaseUser.uid);
+                    CommonData.setUID(firebaseUser.uid);
                 }).catch(function(error) {
                 console.error("Error: ", error);
                 $scope.failed = true;
@@ -196,7 +198,63 @@ hotelControllers.controller('MainController', ['$scope' ,  'Amadeus', '$window' 
 
     }
 
+    $scope.searchHotels = function(e) {
+        console.log("entered search hotels");
+        $scope.checkedArray = [];
+        angular.forEach($scope.spots, function(spot){
+            if (!!spot.selected) $scope.checkedArray.push(spot);
+        })
+        console.log($scope.checkedArray);
 
+        var hotelDict = {};
+        console.log("Before calling hotels");
+
+        for (var it = 0; it < $scope.checkedArray.length; it++) {
+            var checked = $scope.checkedArray[it];
+            if ("location" in checked) {
+                Amadeus.getHotelsAPI(checked.location.latitude, checked.location.longitude, "2017-03-01", "2017-03-07").success(function (data) {
+                    var hotels = data.results;
+                    //console.log(hotels);
+
+                    for (var i = 0; i < hotels.length; i++) {
+                        var code = hotels[i].property_code;
+                        if (code in hotelDict)
+                            hotelDict[code].count = hotelDict[code].count+1;
+                        else hotelDict[code] = {count:1, details:hotels[i]};
+                    }
+
+                    if (it == $scope.checkedArray.length) {
+                        var items = [];
+                        for (var h in hotelDict) {
+                            //console.log("in create own list: ");
+                            //console.log(h);
+                            //console.log(hotelDict[h]);
+                            items.push([h, hotelDict[h]]);
+                        }
+                        //console.log(items);
+
+                        items.sort(function(first, second) {
+                            return second[1].count - first[1].count;
+                        });
+
+                        $scope.hotels = items.map(function(element) {
+                            return element[1];
+                        });
+                        console.log($scope.hotels);
+                    }
+                }).error(function (data) {
+                    console.log(data.message);
+                });
+            }
+        }
+
+        //console.log(hotelDict);
+    }
+
+}]);
+
+hotelControllers.controllers('AccountController', ['$scope' , '$window' , '$location', '$firebaseArray', 'CommonData', function($scope, $window, $location, $firebaseArray, CommonData) {
+    if (CommonData.getUID().length == 0) $location.path('/#');
 
 }]);
 

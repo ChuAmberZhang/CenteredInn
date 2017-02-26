@@ -2,6 +2,14 @@
 .top-bar h1{
   font-family: $grand;
   margin-left: 5%;
+  float: left;
+}
+
+.top-bar #accountLink{
+  font-family: $grand;
+  font-size: 2em;
+  margin-right: 5%;
+  float: right;
 }
 
 .landing{
@@ -130,7 +138,7 @@
     max-width: 475px;
     background: #fff;
     position: absolute;
-    left: 30%;
+    left: 32%;
 
     box-shadow: 0px 2px 5px rgba(0,0,0,.25);
 
@@ -265,6 +273,11 @@
       }
     }
 
+  }
+
+  #searchHotelBtn {
+    display:block;
+    margin:auto;
   }
 }
 

@@ -3,6 +3,8 @@
         <button class='del button' ng-click="getSpots('New York','')"><i class="fa fa-minus" aria-hidden="true"></i></button>
     </header>
 
+    <button class="button" id="searchHotelBtn" ng-click="searchHotels($event)">Starting searching for the best hotels!</button>
+    -
     <div class= "main-body">
         <h4 style="text-align: center" >
 
@@ -14,11 +16,11 @@
                 Suggested Spots
                 <ul class=" spotsList"  >
                     <li class="list-item no-bullet" ng-repeat="spot in spots track by $index">
-                        <div id ="geo{{spot.geoname_id}}">
+                        <div id ="{{$index}}">
                         <a href="" role="tab"  ng-click="expand()">
                             <h5>{{spot.title}}</h5>
                         </a>
-
+                            <input type="checkbox" ng-model="spot.selected" class="spotsCheckbox">
                         </div>
                     </li>
                 </ul>
@@ -32,7 +34,7 @@
                 <ul class="accordion hotelsList" data-accordion role="tablist" data-multiple-opened="false" data-allow-all-closed="true">
                     <li class="accordion-item" ng-repeat="hotel in hotels track by $index">
                         <a href="" role="tab" class="accordion-title" >
-                            <h5>{{hotel.name}}</h5>
+                            <h5>{{hotel.details.property_name}} {{hotel.count}}</h5>
                         </a>
                         <div  class="accordion-content" role="tabpanel" data-tab-content >
                             questions.answer

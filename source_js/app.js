@@ -1,5 +1,7 @@
 var app = angular.module('hotel', ['ngRoute', 'hotelControllers', 'firebase', 'hotelServices','720kb.datepicker']);
 
+
+
 app.config(['$routeProvider', function($routeProvider) {
     $routeProvider.
 
