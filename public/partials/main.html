@@ -1,10 +1,13 @@
 <div class="main-page" ng-controller='MainController'>
-    <header>
+    <button class="accountLink"">My Account</button>
+    <!--<header>
         <button class='del button' ng-click="getSpots('New York','')"><i class="fa fa-minus" aria-hidden="true"></i></button>
-    </header>
+    </header>-->
 
-    <button class="button" id="searchHotelBtn" ng-click="searchHotels($event)">Starting searching for the best hotels!</button>
-    -
+    <div id="searchBtnWrapper">
+        <button class="button" id="searchHotelBtn" ng-click="searchHotels($event)">Starting searching for the best hotels!</button>
+    </div>
+
     <div class= "main-body">
         <h4 style="text-align: center" >
 
@@ -34,7 +37,8 @@
                 <ul class="accordion hotelsList" data-accordion role="tablist" data-multiple-opened="false" data-allow-all-closed="true">
                     <li class="accordion-item" ng-repeat="hotel in hotels track by $index">
                         <a href="" role="tab" class="accordion-title" >
-                            <h5>{{hotel.details.property_name}} {{hotel.count}}</h5>
+                            <h5>{{hotel.details.property_name}}</h5>
+                            <h6>Near {{hotel.count}} of your selected destinations!</h6>
                         </a>
                         <div  class="accordion-content" role="tabpanel" data-tab-content >
                             questions.answer

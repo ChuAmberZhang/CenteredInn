@@ -5,10 +5,11 @@
   float: left;
 }
 
-.top-bar #accountLink{
+.accountLink{
   font-family: $grand;
   font-size: 2em;
   margin-right: 5%;
+  margin-top: -68px;
   float: right;
 }
 
@@ -237,9 +238,23 @@
     width: 50%;
     margin-left: 25%;
     background-color: white;
+    padding: 15px;
+    border-radius: 18px;
+    background:rgba(255,255,255,0.5);
 
-    label {
+    label{
       font-size: 25px;
+    }
+
+    #cityChoice {
+      width: 60%;
+      margin: auto;
+    }
+
+    button {
+      font-size: 25px;
+      margin-top: 5px;
+      margin-bottom: 5px;
     }
   }
 
@@ -275,10 +290,14 @@
 
   }
 
-  #searchHotelBtn {
-    display:block;
-    margin:auto;
+  #searchBtnWrapper {
+    margin: 15px;
+    #searchHotelBtn {
+      display:block;
+      margin:auto;
+    }
   }
+
 }
 
 

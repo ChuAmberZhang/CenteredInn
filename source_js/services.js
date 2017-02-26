@@ -36,11 +36,10 @@ hotelServices.factory('CommonData', function(){
 var secret ="ZPGkwBBoUtCzfTTNFDCW555e6ZNVxv1W";
 hotelServices.factory('Amadeus', function($http, $window) {
     return {
-        getSpotsAPI : function(city,cate) {
+        getSpotsAPI : function(city) {
 
             var baseUrl = "https://api.sandbox.amadeus.com/v1.2/points-of-interest/yapq-search-text?apikey="+secret+"&city_name="
-            +city+"&category="
-            +cate+"&number_of_images=1&number_of_results=8";
+            +city+"&number_of_images=1&number_of_results=8";
             console.log(baseUrl);
             return $http.get(baseUrl);
         },

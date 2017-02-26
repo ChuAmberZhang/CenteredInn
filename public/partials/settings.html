@@ -1,4 +1,5 @@
 <div class="landing" ng-controller='SettingsController'>
+    <button class="accountLink">My Account</button>
 
     <div id="map"></div>
     <div id = "landing-main">
@@ -41,15 +42,15 @@
         <div class="city-date-search" ng-if="loggedIn">
             <form>
                 <label>Start Date</label>
-                <datepicker date-format="MMMM d, y" date-month-title="selected title">
+                <datepicker date-format="yyyy-MM-dd" date-month-title="selected title">
                     <input ng-model="search.start" ng-bind="search.start">
                 </datepicker>
                 <label>End Date</label>
-                <datepicker date-format="MMMM d, y" date-month-title="selected title">
+                <datepicker date-format="yyyy-MM-dd" date-month-title="selected title">
                     <input ng-model="search.end" ng-bind="search.end">
                 </datepicker>
                 <label>What is your destination city?</label>
-                <input type="text" title="city" placeholder="Destination city" ng-model="search.city"/>
+                <input id="cityChoice" type="text" title="city" placeholder="Destination city" ng-model="search.city"/>
                 <button type="submit" class="btn" ng-click="searchSpots($event)">Search</button>
             </form>
             <!-- Needs validation-->

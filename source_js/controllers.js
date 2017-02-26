@@ -24,6 +24,11 @@ hotelControllers.controller('SettingsController', ['$scope' , '$window' , '$loca
     $scope.signup = {name:"", email:"", pwd:""};
     $scope.fail = {message:""};
 
+    $scope.openAccountinSettings = function() {
+        console.log("account");
+        if ($scope.loggedIn) $location.path('/account');
+    }
+
     $scope.switch = function(e) {
         if ($scope.isLogin) {
             $scope.switchMessage = "Already a user? Login here!";
@@ -101,14 +106,16 @@ hotelControllers.controller('MainController', ['$scope' ,  'Amadeus', '$window' 
 
     //console.log(CommonData.getCity());
     var cityParam = CommonData.getCity();
-    var startParam = CommonData.getStartDate();
-    var endParam = CommonData.getEndDate();
 
+    $scope.openAccountinMain = function() {
+        console.log("account");
+        if (CommonData.getUID().length != 0) $location.path('/account');
+        else $location.path('/#');
+    }
 
-
-    $scope.getSpots = function(city, cate) {
-        console.log(city,cate);
-        Amadeus.getSpotsAPI(city,cate).success(function (data) {
+    if (cityParam.length != 0) {
+        console.log(cityParam);
+        Amadeus.getSpotsAPI(cityParam).success(function (data) {
             $scope.spots = data.points_of_interest;
             $scope.currCity = data.current_city;
             $window.map = new google.maps.Map(document.getElementById('map'), {
@@ -124,6 +131,8 @@ hotelControllers.controller('MainController', ['$scope' ,  'Amadeus', '$window' 
             $scope.spots = data.message;
         });
     }
+
+
     function refresh(hotelIcon){
         deleteMarkers();
         for (var i = 0; i < $scope.spots.length; i++) {
@@ -187,9 +196,11 @@ hotelControllers.controller('MainController', ['$scope' ,  'Amadeus', '$window' 
         clearMarkers();
         $scope.markers.length = 0;
     }
-    $('a').on('click', function(e) {
-        console.log($(this).parents());
+
+    $('#accountLink').on('click', function(e) {
+        $(location).attr('href', '/#/account');
     });
+
     $scope.expand = function(){
         //console.log($(this).parents());
     }
@@ -212,7 +223,9 @@ hotelControllers.controller('MainController', ['$scope' ,  'Amadeus', '$window' 
         for (var it = 0; it < $scope.checkedArray.length; it++) {
             var checked = $scope.checkedArray[it];
             if ("location" in checked) {
-                Amadeus.getHotelsAPI(checked.location.latitude, checked.location.longitude, "2017-03-01", "2017-03-07").success(function (data) {
+                var startDate = CommonData.getStartDate();
+                var endDate = CommonData.getEndDate();
+                Amadeus.getHotelsAPI(checked.location.latitude, checked.location.longitude, startDate, endDate).success(function (data) {
                     var hotels = data.results;
                     //console.log(hotels);
 
@@ -253,8 +266,10 @@ hotelControllers.controller('MainController', ['$scope' ,  'Amadeus', '$window' 
 
 }]);
 
-hotelControllers.controllers('AccountController', ['$scope' , '$window' , '$location', '$firebaseArray', 'CommonData', function($scope, $window, $location, $firebaseArray, CommonData) {
+hotelControllers.controller('AccountController', ['$scope' , '$window' , '$location', '$firebaseArray', 'CommonData', function($scope, $window, $location, $firebaseArray, CommonData) {
+    console.log("in account controller");
+    console.log(CommonData.getUID());
     if (CommonData.getUID().length == 0) $location.path('/#');
-
+    else console.log("yeah");
 }]);
 
