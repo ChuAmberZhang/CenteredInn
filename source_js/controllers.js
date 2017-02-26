@@ -93,8 +93,8 @@ hotelControllers.controller('MainController', ['$scope' ,  'Amadeus', '$window' 
         },
         zoom: 8
     });
-    $scope.spots=new Array(10);
-    $scope.hotels=new Array(10);
+    $scope.spots;
+    $scope.hotels;
 
     //console.log(CommonData.getCity());
     var cityParam = CommonData.getCity();
@@ -113,7 +113,7 @@ hotelControllers.controller('MainController', ['$scope' ,  'Amadeus', '$window' 
                     lat:$scope.currCity.location.latitude,
                     lng:$scope.currCity.location.longitude
                 },
-                zoom: 9
+                zoom: 12
             });
             for(var i=0; i<10; i++) {
                 var marker = new google.maps.Marker({
@@ -122,6 +122,23 @@ hotelControllers.controller('MainController', ['$scope' ,  'Amadeus', '$window' 
                         lng: $scope.spots[i].location.longitude
                     },
                     map: map
+                });
+                marker.addListener('click', function() {
+                    var str="<div style='padding:10px;'><p style='font-weight: 400;font-size:30px' >"+movie['title']+"("+movie.year+")"+"<a onclick = like() style='color:red' >   <i class='fa fa-heart' aria-hidden='true'></i></a></p>"
+                            +"<img class='col-sm-6' src='"+"spots["+i+"].main_image"+"' alt='https://pbs.twimg.com/profile_images/600060188872155136/st4Sp6Aw.jpg' style='width:auto;height:160px;margin-bottom: 20px'>"
+/*
+                            +"<div style='font-weight: 400'>Rating: <span style='font-weight: 200'>"+movie.idbrating+"</span></div>"
+                            +"<div style='font-weight: 400'>Director: <span style='font-weight: 200'>"+movie.director+"</span>"
+                            +"<div style='font-weight: 400'>Actors: <span style='font-weight: 200'>"+movie.actors+"</span>"
+
+                            +"<div style='font-weight: 400'>Genre: <span style='font-weight: 200'>"+movie.genre+"</span></div>"
+
+                            +"<div style='font-weight: 400'>Location: <span style='font-weight: 200'>"+movie.address+"</span></div>*/+"</div>"
+                        ;
+                    console.log(str);
+
+                    infowindow.setContent(str);
+                    infowindow.open(map, marker);
                 });
                 $scope.markers.push(marker);
                 marker.setMap($window.map);

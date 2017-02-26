@@ -32,7 +32,7 @@ hotelServices.factory('Amadeus', function($http, $window) {
 
             var baseUrl = "https://api.sandbox.amadeus.com/v1.2/points-of-interest/yapq-search-text?apikey="+secret+"&city_name="
             +city+"&category="
-            +cate+"&number_of_images=1&number_of_results=2";
+            +cate+"&number_of_images=1&number_of_results=8";
             console.log(baseUrl);
             return $http.get(baseUrl);
         }
