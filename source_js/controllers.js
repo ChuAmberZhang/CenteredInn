@@ -10,7 +10,8 @@ var config = {
 };
 firebase.initializeApp(config);
 
-hotelControllers.controller('SettingsController', ['$scope' , '$window' , '$location', '$firebaseAuth', 'CommonData', function($scope, $window, $location, $firebaseAuth, CommonData) {
+hotelControllers.controller('SettingsController', ['$scope' , '$window' , '$location', '$firebaseAuth', 'CommonData',
+    function($scope, $window, $location, $firebaseAuth, CommonData) {
 
     $scope.loggedIn = true;
     $scope.isLogin = true;
@@ -46,7 +47,7 @@ hotelControllers.controller('SettingsController', ['$scope' , '$window' , '$loca
             $scope.authObj.$signInWithEmailAndPassword(email, password).then(function(firebaseUser) {
                 console.log("Signed in as:", firebaseUser.uid);
                 $scope.loggedIn = true;
-                $window.sessionStorage.setItem("uid", firebaseUser.uid);
+                CommonData.setUID(firebaseUser.uid);
             }).catch(function(error) {
                 console.error("Authentication failed:", error);
                 $scope.failed = true;
@@ -61,7 +62,7 @@ hotelControllers.controller('SettingsController', ['$scope' , '$window' , '$loca
                 .then(function(firebaseUser) {
                     console.log("User " + firebaseUser.uid + " " + username + " created successfully!");
                     $scope.loggedIn = true;
-                    $window.sessionStorage.setItem("uid", firebaseUser.uid);
+                    CommonData.setUID(firebaseUser.uid);
                 }).catch(function(error) {
                 console.error("Error: ", error);
                 $scope.failed = true;
@@ -216,4 +217,9 @@ hotelControllers.controller('MainController', ['$scope' ,  'Amadeus', '$window' 
     }
 
 }]);
+
+hotelControllers.constructor('AccountController', ['$scope' , '$window' , '$location', '$firebaseArray', 'CommonData', function($scope, $window, $location, $firebaseArray, CommonData) {
+    if (CommonData.getUID().length == 0) $location.path('/#');
+}]);
+
 

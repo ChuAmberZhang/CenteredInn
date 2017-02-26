@@ -4,6 +4,7 @@ hotelServices.factory('CommonData', function(){
     var city = "";
     var startDate = "";
     var endDate = "";
+    var uid = "";
     return{
         getCity : function(){
             return city;
@@ -14,6 +15,9 @@ hotelServices.factory('CommonData', function(){
         getEndDate : function(){
             return endDate;
         },
+        getUID : function(){
+            return uid;
+        },
         setCity : function(newData){
             city = newData;
         },
@@ -22,9 +26,13 @@ hotelServices.factory('CommonData', function(){
         },
         setEndDate : function(newData){
             endDate = newData;
+        },
+        setUID : function(newData){
+            setUID = newData;
         }
     }
 });
+
 var secret ="ZPGkwBBoUtCzfTTNFDCW555e6ZNVxv1W";
 hotelServices.factory('Amadeus', function($http, $window) {
     return {

@@ -1,7 +1,14 @@
 // Add any custom Sass & CSS here
-.top-bar h1{
+.top-bar #logo{
   font-family: $grand;
   margin-left: 5%;
+  float: left;
+}
+
+.top-bar #accountLink{
+  font-family: $grand;
+  margin-right: 5%;
+  float: right;
 }
 
 .landing{
