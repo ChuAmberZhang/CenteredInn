@@ -240,6 +240,7 @@
 
 .main-page{
   .main-body{
+    margin-top: 20px;
     .row{
       #map{
         //width: 100%;
@@ -248,7 +249,7 @@
       }
       .myList{
         height: 100px;
-        background-color: #0c4d78;
+        //background-color: #0c4d78;
         .list-item{
           height: 30px;
           &:hover {
@@ -260,7 +261,11 @@
 
       }
     }
+  }
 
+  #searchHotelBtn {
+    display:block;
+    margin:auto;
   }
 }
 

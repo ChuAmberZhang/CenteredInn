@@ -144,15 +144,16 @@ hotelControllers.controller('MainController', ['$scope' ,  'Amadeus', '$window' 
                 marker.setMap($window.map);
             }
 
-
         }).error(function (data) {
 
             $scope.spots = data.message;
         });
     }
+
     $('a').on('click', function(e) {
         console.log($(this).parents());
     });
+
     $scope.expand = function(){
         //console.log($(this).parents());
     }
@@ -161,7 +162,58 @@ hotelControllers.controller('MainController', ['$scope' ,  'Amadeus', '$window' 
 
     }
 
+    $scope.searchHotels = function(e) {
+        console.log("entered search hotels");
+        $scope.checkedArray = [];
+        angular.forEach($scope.spots, function(spot){
+            if (!!spot.selected) $scope.checkedArray.push(spot);
+        })
+        console.log($scope.checkedArray);
 
+        var hotelDict = {};
+        console.log("Before calling hotels");
+
+        for (var it = 0; it < $scope.checkedArray.length; it++) {
+            var checked = $scope.checkedArray[it];
+            if ("location" in checked) {
+                Amadeus.getHotelsAPI(checked.location.latitude, checked.location.longitude, "2017-03-01", "2017-03-07").success(function (data) {
+                    var hotels = data.results;
+                    //console.log(hotels);
+
+                    for (var i = 0; i < hotels.length; i++) {
+                        var code = hotels[i].property_code;
+                        if (code in hotelDict)
+                            hotelDict[code].count = hotelDict[code].count+1;
+                        else hotelDict[code] = {count:1, details:checked};
+                    }
+
+                    if (it == $scope.checkedArray.length) {
+                        var items = [];
+                        for (var h in hotelDict) {
+                            //console.log("in create own list: ");
+                            //console.log(h);
+                            //console.log(hotelDict[h]);
+                            items.push([h, hotelDict[h]]);
+                        }
+                        //console.log(items);
+
+                        items.sort(function(first, second) {
+                            return second[1].count - first[1].count;
+                        });
+
+                        $scope.hotels = items.map(function(element) {
+                           return element[1];
+                        });
+                        //console.log($scope.hotels);
+                    }
+                }).error(function (data) {
+                    console.log(data.message);
+                });
+            }
+        }
+
+        //console.log(hotelDict);
+    }
 
 }]);
 

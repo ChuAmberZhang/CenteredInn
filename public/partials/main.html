@@ -3,20 +3,21 @@
         <button class='del button' ng-click="getSpots('New York','')"><i class="fa fa-minus" aria-hidden="true"></i></button>
     </header>
 
+    <button class="button" id="searchHotelBtn" ng-click="searchHotels($event)">Starting searching for the best hotels!</button>
+
     <div class= "main-body">
-        <h4 style="text-align: center" >This is main
-
-
-        </h4>
         <div class="row">
             <div class="myList large-3 columns">
                 <ul class="accordion spotsList" data-accordion role="tablist" data-multiple-opened="false" data-allow-all-closed="true">
                     <li class="accordion-item" ng-repeat="spot in spots track by $index">
-                        <a href="" role="tab" class="accordion-title" ng-click="expand()">
-                            <h5>{{spot.title}}</h5>
-                        </a>
-                        <div  class="accordion-content" role="tabpanel" data-tab-content >
-                             <img src="{{spot.main_image}}"style="height:60px; width:60px">
+                        <div id="{{$index}}">
+                            <a href="" role="tab" class="accordion-title" ng-click="expand()">
+                                <h5>{{spot.title}}</h5>
+                            </a>
+                            <input type="checkbox" ng-model="spot.selected" class="spotsCheckbox">
+                            <div  class="accordion-content" role="tabpanel" data-tab-content >
+                                 <img src="{{spot.main_image}}"style="height:60px; width:60px">
+                            </div>
                         </div>
                     </li>
                 </ul>
@@ -28,7 +29,7 @@
                 <ul class="accordion hotelsList" data-accordion role="tablist" data-multiple-opened="false" data-allow-all-closed="true">
                     <li class="accordion-item" ng-repeat="hotel in hotels track by $index">
                         <a href="" role="tab" class="accordion-title" >
-                            <h5>{{hotel.name}}</h5>
+                            <h5>{{hotel.details.property_name}} {{hotel.count}}</h5>
                         </a>
                         <div  class="accordion-content" role="tabpanel" data-tab-content >
                             questions.answer

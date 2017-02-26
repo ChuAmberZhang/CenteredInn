@@ -35,6 +35,17 @@ hotelServices.factory('Amadeus', function($http, $window) {
             +cate+"&number_of_images=1&number_of_results=8";
             console.log(baseUrl);
             return $http.get(baseUrl);
+        },
+
+        getHotelsAPI : function(lat, long, checkin, checkout) {
+            console.log("Calling hotels");
+            var baseUrl = "http://api.sandbox.amadeus.com/v1.2/hotels/search-circle?"
+                +"latitude="+lat
+                +"&longitude="+long+"&radius=50&"
+                +"check_in="+checkin
+                +"&check_out="+checkout
+                +"&number_of_results=10&apikey="+secret;
+            return $http.get(baseUrl);
         }
     }
 });
