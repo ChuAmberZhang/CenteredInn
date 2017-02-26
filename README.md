@@ -1,6 +1,5 @@
 # CenteredInn
 
-[PROJECT DESCRIPTION]
   This is a project for searching the best hotels or inns according to proximity to multiple destinations. Built for HackIllinois 2017. Using Amadeus's Travel Innovation Sandbox and a Firebase realtime database, the project enables users to browse through a list of spots of interest according to their choice of a destination city. Then the users may check all the attractions they want to visit and the web app will generate a list of hotels based on the number of attractions they are in close proximity with. the web page also features a dynamic google map that marks the places of interest as well as hotel locations. 
   
   The project is still in a crude prototype, with only an outline of the functionality we would like implemented. Future development opportunities can include a more secure and extensive user account support system, better user interface design, incoporation with other travel apis to create a one-stop travel planning experience, etc. Due to the fact that this was done for a Hackathon, there are many parts where we rushed through and basically hacked around the code. For future development, these problems must be addressed and our project structure must be reorganized.
@@ -13,3 +12,4 @@
      * Firebase: https://firebase.google.com/
 
 ## License 
+ * CenteredInn is licensed under the GNU General Public License.
