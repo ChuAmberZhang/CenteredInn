@@ -184,7 +184,7 @@ hotelControllers.controller('MainController', ['$scope' ,  'Amadeus', '$window' 
                         var code = hotels[i].property_code;
                         if (code in hotelDict)
                             hotelDict[code].count = hotelDict[code].count+1;
-                        else hotelDict[code] = {count:1, details:checked};
+                        else hotelDict[code] = {count:1, details:hotels[i]};
                     }
 
                     if (it == $scope.checkedArray.length) {
@@ -204,7 +204,7 @@ hotelControllers.controller('MainController', ['$scope' ,  'Amadeus', '$window' 
                         $scope.hotels = items.map(function(element) {
                            return element[1];
                         });
-                        //console.log($scope.hotels);
+                        console.log($scope.hotels);
                     }
                 }).error(function (data) {
                     console.log(data.message);
