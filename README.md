@@ -6,10 +6,19 @@
   
 ## BUILD/INSTALLATION INSTRUCTIONS
   * [IOS]
-    * Dependencies: You must have npm, git, node, grunt (with ruby and compass), and bower installed. Most if not all can be installed with brew or npm. After downloading the source files from this repository, run npm-install and install any other dependencies required. Once all dependencies are met, run grunt and the website should be up and running on your localhost, port 3000.
-    * API keys: This project require api keys from Amadeus and Firebase. Both can be obtained on their website.
+    * Dependencies: You must have npm, git, node, grunt (with ruby and compass), and bower installed. For specific pacakges, read gruntfile.js and package.json. Most if not all can be installed with brew or npm. After downloading the source files from this repository, run npm-install and install any other dependencies required. 
+    * API keys: This project require api keys from Amadeus, Firebase and Google Maps. Both can be obtained on their website.
      * Amadeus: https://sandbox.amadeus.com/api-catalog
      * Firebase: https://firebase.google.com/
+     * Google Maps: https://developers.google.com/maps/
+
+## USAGE
+  Once all dependencies are met, run grunt and the website should be up and running on your localhost, port 3000.
+  
+## CONTRIBUTOR GUIDE
+  We welcome contributers! 
+  [Contribution guidelines for this project are here](CONTRIBUTING.md)
 
 ## License 
  * CenteredInn is licensed under the GNU General Public License.
+ [Full GPL license here](LICENSE)
