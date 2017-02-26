@@ -4542,7 +4542,7 @@ table.hover tbody tr:nth-of-type(even):hover {
   /* line 24, ../../source_sass/_base.scss */
   .landing #landing-main {
     border: 10px;
-    height: 1000px;
+    height: 1200px;
     text-align: center;
     background: transparent; }
     @media screen and (max-width: 39.9375em) {
@@ -4731,10 +4731,15 @@ table.hover tbody tr:nth-of-type(even):hover {
 .main-page .main-body .row .myList {
   height: 100px; }
   /* line 251, ../../source_sass/_base.scss */
-  .main-page .main-body .row .myList .list-item {
-    height: 30px; }
-    /* line 253, ../../source_sass/_base.scss */
-    .main-page .main-body .row .myList .list-item:hover {
+  .main-page .main-body .row .myList .list_item {
+    height: auto;
+    border-style: solid;
+    border-width: 1px;
+    /*          .selectedItem{
+                background-color: #a8c6e4;
+              }*/ }
+    /* line 255, ../../source_sass/_base.scss */
+    .main-page .main-body .row .myList .list_item:hover {
       background-color: #a8c6e4;
       zoom: 1.1;
       transition: background-color 0.3s, zoom 5s; }

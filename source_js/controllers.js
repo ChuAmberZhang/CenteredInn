@@ -10,8 +10,7 @@ var config = {
 };
 firebase.initializeApp(config);
 
-hotelControllers.controller('SettingsController', ['$scope' , '$window' , '$location', '$firebaseAuth', 'CommonData',
-    function($scope, $window, $location, $firebaseAuth, CommonData) {
+hotelControllers.controller('SettingsController', ['$scope' , '$window' , '$location', '$firebaseAuth', 'CommonData', function($scope, $window, $location, $firebaseAuth, CommonData) {
 
     $scope.loggedIn = true;
     $scope.isLogin = true;
@@ -24,7 +23,6 @@ hotelControllers.controller('SettingsController', ['$scope' , '$window' , '$loca
     $scope.fail = {message:""};
 
     $scope.switch = function(e) {
-        e.preventDefault();
         if ($scope.isLogin) {
             $scope.switchMessage = "Already a user? Login here!";
             $scope.buttonLabel = "Sign Up";
@@ -38,7 +36,6 @@ hotelControllers.controller('SettingsController', ['$scope' , '$window' , '$loca
 
     // Auth Logic is here
     $scope.login = function(e) {
-        e.preventDefault();
         $scope.authObj = $firebaseAuth();
 
         if ($scope.isLogin) {
@@ -47,7 +44,7 @@ hotelControllers.controller('SettingsController', ['$scope' , '$window' , '$loca
             $scope.authObj.$signInWithEmailAndPassword(email, password).then(function(firebaseUser) {
                 console.log("Signed in as:", firebaseUser.uid);
                 $scope.loggedIn = true;
-                CommonData.setUID(firebaseUser.uid);
+                $window.sessionStorage.setItem("uid", firebaseUser.uid);
             }).catch(function(error) {
                 console.error("Authentication failed:", error);
                 $scope.failed = true;
@@ -62,7 +59,7 @@ hotelControllers.controller('SettingsController', ['$scope' , '$window' , '$loca
                 .then(function(firebaseUser) {
                     console.log("User " + firebaseUser.uid + " " + username + " created successfully!");
                     $scope.loggedIn = true;
-                    CommonData.setUID(firebaseUser.uid);
+                    $window.sessionStorage.setItem("uid", firebaseUser.uid);
                 }).catch(function(error) {
                 console.error("Error: ", error);
                 $scope.failed = true;
@@ -72,7 +69,6 @@ hotelControllers.controller('SettingsController', ['$scope' , '$window' , '$loca
     }
 
     $scope.searchSpots = function(e) {
-        e.preventDefault();
         //console.log($scope.search.start);
         //console.log($scope.search.end);
         var city = $scope.search.city;
@@ -96,6 +92,10 @@ hotelControllers.controller('MainController', ['$scope' ,  'Amadeus', '$window' 
     });
     $scope.spots;
     $scope.hotels;
+    var infowindow = new google.maps.InfoWindow({
+        content: null,
+        disableAutoPan: true
+    });
 
     //console.log(CommonData.getCity());
     var cityParam = CommonData.getCity();
@@ -116,45 +116,78 @@ hotelControllers.controller('MainController', ['$scope' ,  'Amadeus', '$window' 
                 },
                 zoom: 12
             });
-            for(var i=0; i<10; i++) {
-                var marker = new google.maps.Marker({
-                    position: {
-                        lat: $scope.spots[i].location.latitude,
-                        lng: $scope.spots[i].location.longitude
-                    },
-                    map: map
-                });
-                marker.addListener('click', function() {
-                    var str="<div style='padding:10px;'><p style='font-weight: 400;font-size:30px' >"+movie['title']+"("+movie.year+")"+"<a onclick = like() style='color:red' >   <i class='fa fa-heart' aria-hidden='true'></i></a></p>"
-                            +"<img class='col-sm-6' src='"+"spots["+i+"].main_image"+"' alt='https://pbs.twimg.com/profile_images/600060188872155136/st4Sp6Aw.jpg' style='width:auto;height:160px;margin-bottom: 20px'>"
-/*
-                            +"<div style='font-weight: 400'>Rating: <span style='font-weight: 200'>"+movie.idbrating+"</span></div>"
-                            +"<div style='font-weight: 400'>Director: <span style='font-weight: 200'>"+movie.director+"</span>"
-                            +"<div style='font-weight: 400'>Actors: <span style='font-weight: 200'>"+movie.actors+"</span>"
-
-                            +"<div style='font-weight: 400'>Genre: <span style='font-weight: 200'>"+movie.genre+"</span></div>"
-
-                            +"<div style='font-weight: 400'>Location: <span style='font-weight: 200'>"+movie.address+"</span></div>*/+"</div>"
-                        ;
-                    console.log(str);
-
-                    infowindow.setContent(str);
-                    infowindow.open(map, marker);
-                });
-                $scope.markers.push(marker);
-                marker.setMap($window.map);
-            }
-
+            refresh(false);
         }).error(function (data) {
 
             $scope.spots = data.message;
         });
     }
+    function refresh(hotelIcon){
+        deleteMarkers();
+        for (var i = 0; i < $scope.spots.length; i++) {
+            console.log($scope.spots[i]);
+            var icon;
+            if(hotelIcon == true)
+                icon = '../media/hotel.png';
+            else
+                icon = '../media/spot.png';
+            addMarker($scope.spots[i],icon);
+        }
+        showMarkers();
+    }
+    function addMarker(spot,iconLink) {
+        var marker = new google.maps.Marker({
+            position: {lat: spot.location.latitude,
+                lng: spot.location.longitude},
+            map: map,
+            icon: iconLink
+        });
+        jQuery(document).ready(function($){
+            marker.addListener('mouseover', function($event){
+                    var str="<div style='padding:10px;'>"
+                            +"<h6>"+spot.title+"</h6>"
+                            +"<img class='col-sm-6' src='"+spot.main_image+"' alt='https://pbs.twimg.com/profile_images/600060188872155136/st4Sp6Aw.jpg' style='width:80px;height:auto;margin-bottom: 20px'>"
+                            +"</div>"
+                        ;
+                    infowindow.setContent(str);
+                    infowindow.open(map, marker);
+                    var list_item = document.getElementById("geo"+spot.geoname_id);
+                    $(list_item).css("background-color", "#a8c6e4");
 
+                }
+            );
+            marker.addListener('mouseout', function($event){
+                    infowindow.close();
+                    var list_item = document.getElementById("geo"+spot.geoname_id);
+                    $(list_item).css("background-color", "white");
+
+                }
+            );
+        });
+
+        $scope.markers.push(marker);
+    }
+    function setMapOnAll(map) {
+        for (var i = 0; i < $scope.markers.length; i++) {
+            $scope.markers[i].setMap(map);
+        }
+    }
+    // Removes the markers from the map, but keeps them in the array.
+    function clearMarkers() {
+        setMapOnAll(null);
+    }
+    // Shows any markers currently in the array.
+    function showMarkers() {
+        setMapOnAll(map);
+    }
+    // Deletes all markers in the array by removing references to them.
+    function deleteMarkers() {
+        clearMarkers();
+        $scope.markers.length = 0;
+    }
     $('a').on('click', function(e) {
         console.log($(this).parents());
     });
-
     $scope.expand = function(){
         //console.log($(this).parents());
     }
@@ -163,63 +196,7 @@ hotelControllers.controller('MainController', ['$scope' ,  'Amadeus', '$window' 
 
     }
 
-    $scope.searchHotels = function(e) {
-        console.log("entered search hotels");
-        $scope.checkedArray = [];
-        angular.forEach($scope.spots, function(spot){
-            if (!!spot.selected) $scope.checkedArray.push(spot);
-        })
-        console.log($scope.checkedArray);
 
-        var hotelDict = {};
-        console.log("Before calling hotels");
-
-        for (var it = 0; it < $scope.checkedArray.length; it++) {
-            var checked = $scope.checkedArray[it];
-            if ("location" in checked) {
-                Amadeus.getHotelsAPI(checked.location.latitude, checked.location.longitude, "2017-03-01", "2017-03-07").success(function (data) {
-                    var hotels = data.results;
-                    //console.log(hotels);
-
-                    for (var i = 0; i < hotels.length; i++) {
-                        var code = hotels[i].property_code;
-                        if (code in hotelDict)
-                            hotelDict[code].count = hotelDict[code].count+1;
-                        else hotelDict[code] = {count:1, details:hotels[i]};
-                    }
-
-                    if (it == $scope.checkedArray.length) {
-                        var items = [];
-                        for (var h in hotelDict) {
-                            //console.log("in create own list: ");
-                            //console.log(h);
-                            //console.log(hotelDict[h]);
-                            items.push([h, hotelDict[h]]);
-                        }
-                        //console.log(items);
-
-                        items.sort(function(first, second) {
-                            return second[1].count - first[1].count;
-                        });
-
-                        $scope.hotels = items.map(function(element) {
-                           return element[1];
-                        });
-                        console.log($scope.hotels);
-                    }
-                }).error(function (data) {
-                    console.log(data.message);
-                });
-            }
-        }
-
-        //console.log(hotelDict);
-    }
 
 }]);
-
-hotelControllers.constructor('AccountController', ['$scope' , '$window' , '$location', '$firebaseArray', 'CommonData', function($scope, $window, $location, $firebaseArray, CommonData) {
-    if (CommonData.getUID().length == 0) $location.path('/#');
-}]);
-
 

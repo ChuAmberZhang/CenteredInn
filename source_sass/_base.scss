@@ -1,14 +1,7 @@
 // Add any custom Sass & CSS here
-.top-bar #logo{
+.top-bar h1{
   font-family: $grand;
   margin-left: 5%;
-  float: left;
-}
-
-.top-bar #accountLink{
-  font-family: $grand;
-  margin-right: 5%;
-  float: right;
 }
 
 .landing{
@@ -247,7 +240,6 @@
 
 .main-page{
   .main-body{
-    margin-top: 20px;
     .row{
       #map{
         //width: 100%;
@@ -256,23 +248,23 @@
       }
       .myList{
         height: 100px;
-        //background-color: #0c4d78;
-        .list-item{
-          height: 30px;
+        .list_item{
+          height: auto;
+          border-style: solid;
+          border-width: 1px;
           &:hover {
             background-color: #a8c6e4;
             zoom:1.1;
             transition: background-color 0.3s, zoom 5s;
           }
+/*          .selectedItem{
+            background-color: #a8c6e4;
+          }*/
         }
 
       }
     }
-  }
 
-  #searchHotelBtn {
-    display:block;
-    margin:auto;
   }
 }
 
