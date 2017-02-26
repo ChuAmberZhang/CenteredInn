@@ -12,13 +12,14 @@ hotelServices.factory('CommonData', function(){
 
     }
 });
-
+var secret ="ZPGkwBBoUtCzfTTNFDCW555e6ZNVxv1W";
 hotelServices.factory('Amadeus', function($http, $window) {
     return {
-        getUsers : function() {
-            var baseUrl = $window.sessionStorage.baseurl;
-            console.log(baseUrl+'/api/users');
-            return $http.get(baseUrl+'/api/users');
+        getSpotsAPI : function() {
+            var city = "New%20York";
+            var baseUrl = "https://api.sandbox.amadeus.com/v1.2/points-of-interest/yapq-search-text?city_name="+city+"&image_size=small&category=zoo&;apikey="+secret;
+            console.log(baseUrl);
+            return "ads"//;$http.get(baseUrl+'/api/users');
         }
     }
 });

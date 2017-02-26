@@ -12,6 +12,10 @@ app.config(['$routeProvider', function($routeProvider) {
     templateUrl: 'partials/task.html',
     controller: 'TaskController'
   }).
+  when('/main', {
+      templateUrl: 'partials/main.html',
+      controller: 'MainController'
+  }).
 
   otherwise({
     redirectTo: '/settings'

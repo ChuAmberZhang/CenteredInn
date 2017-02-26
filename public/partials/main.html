@@ -1,0 +1,46 @@
+<div class="main-page" ng-controller='MainController'>
+    <header>
+        <button class='del button' ng-click="getSpots('New York')"><i class="fa fa-minus" aria-hidden="true"></i></button>
+    </header>
+
+    <div class= "main-body">
+        <h4 style="text-align: center" >This is main
+
+
+        </h4>
+        <div class="row">
+            <div class="myList large-3 columns">
+                <ul class="accordion spotsList" data-accordion role="tablist" data-multiple-opened="false" data-allow-all-closed="true">
+                    <li class="accordion-item" ng-repeat="spot in spots">
+                        <a href="" role="tab" class="accordion-title" >
+                            <h5>{{spot.name}}</h5>
+                        </a>
+                        <div  class="accordion-content" role="tabpanel" data-tab-content >
+                             questions.answer
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="large-6 columns" id="map">
+
+            </div>
+            <div class="myList large-3 columns">
+                <ul class="accordion hotelsList" data-accordion role="tablist" data-multiple-opened="false" data-allow-all-closed="true">
+                    <li class="accordion-item" ng-repeat="hotel in hotels">
+                        <a href="" role="tab" class="accordion-title" >
+                            <h5>{{hotel.name}}</h5>
+                        </a>
+                        <div  class="accordion-content" role="tabpanel" data-tab-content >
+                            questions.answer
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!--<input id="search" ng-model="text" spellcheck="false" maxlength="64" ng-enter="search()">-->
+
+
+    </div>
+
+</div>

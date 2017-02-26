@@ -4646,6 +4646,22 @@ table.hover tbody tr:nth-of-type(even):hover {
       .landing .transition .btn:hover i {
         color: #DEA5A4; }
 
+/* line 150, ../../source_sass/_base.scss */
+.main-page .main-body .row #map {
+  height: 600px; }
+/* line 155, ../../source_sass/_base.scss */
+.main-page .main-body .row .myList {
+  height: 100px;
+  background-color: #0c4d78; }
+  /* line 158, ../../source_sass/_base.scss */
+  .main-page .main-body .row .myList .list-item {
+    height: 30px; }
+    /* line 160, ../../source_sass/_base.scss */
+    .main-page .main-body .row .myList .list-item:hover {
+      background-color: #a8c6e4;
+      zoom: 1.1;
+      transition: background-color 0.3s, zoom 5s; }
+
 /*
   NOTE: Do not touch this file. Write the bulk of your custom styles
   in _base.scss

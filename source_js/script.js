@@ -17,5 +17,5 @@ function highlightThis(event) {
 function doerSort(name){
     console.log(name.value);
 }
-//$(document).ready(main);
+
 
