@@ -12,10 +12,15 @@ firebase.initializeApp(config);
 
 hotelControllers.controller('SettingsController', ['$scope' , '$window' , '$firebaseAuth', function($scope, $window, $firebaseAuth) {
 
-    $scope.loggedIn = true;
+    $scope.loggedIn = false;
     $scope.isLogin = true;
+    $scope.failed = false;
     $scope.switchMessage = "New user? Sign up here!";
     $scope.buttonLabel = "Login";
+    $scope.search = {city:"", start:"", end:""};
+    $scope.login = {email:"", pwd:""};
+    $scope.signup = {name:"", email:"", pwd:""};
+    $scope.fail = {message:""};
 
     $scope.switch = function(e) {
         e.preventDefault();
@@ -33,29 +38,32 @@ hotelControllers.controller('SettingsController', ['$scope' , '$window' , '$fire
     // Auth Logic is here
     $scope.login = function(e) {
         e.preventDefault();
-        var email = $scope.login.email;
-        var password = $scope.login.pwd;
         $scope.authObj = $firebaseAuth();
 
         if ($scope.isLogin) {
+            var email = $scope.login.email;
+            var password = $scope.login.pwd;
             $scope.authObj.$signInWithEmailAndPassword(email, password).then(function(firebaseUser) {
                 console.log("Signed in as:", firebaseUser.uid);
                 $scope.loggedIn = true;
             }).catch(function(error) {
                 console.error("Authentication failed:", error);
                 $scope.failed = true;
-                $scope.login.failMessage = error.message;
+                $scope.fail.message = error.message;
             });
         }
         else {
-            $scope.authObj.$createUserWithEmailAndPassword($signup.email, $signup.password)
+            var username = $scope.signup.name;
+            var email = $scope.signup.email;
+            var password = $scope.signup.pwd;
+            $scope.authObj.$createUserWithEmailAndPassword(email, password)
                 .then(function(firebaseUser) {
-                    console.log("User " + firebaseUser.uid + " created successfully!");
+                    console.log("User " + firebaseUser.uid + " " + username + " created successfully!");
                     $scope.loggedIn = true;
                 }).catch(function(error) {
                 console.error("Error: ", error);
                 $scope.failed = true;
-                $scope.login.failMessage = error.message;
+                $scope.fail.message = error.message;
             });
         }
     }
@@ -66,6 +74,8 @@ hotelControllers.controller('SettingsController', ['$scope' , '$window' , '$fire
         //console.log($scope.search.end);
         var city = $scope.search.city;
         console.log(city)
+        console.log($scope.search.start);
+        console.log($scope.search.end);
     }
 }]);
 

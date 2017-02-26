@@ -34,7 +34,7 @@
                     <input type="email" title="email" placeholder="email" ng-model="signup.email"/>
                     <input type="password" title="password" placeholder="password" ng-model="signup.pwd"/>
                 </div>
-                <a ng-init="failed=false" ng-if="loginFailed">{{login.failMessage}}</a>
+                <a ng-if="failed">{{fail.message}}</a>
                 <button type="submit" class="btn" ng-click="login($event)">{{buttonLabel}}</button>
                 <a class="switch" ng-click="switch($event)">{{switchMessage}}</a>
             </form>
@@ -50,7 +50,7 @@
                 <datepicker date-format="MMMM d, y" date-month-title="selected title">
                     <input ng-model="search.end" ng-bind="search.end">
                 </datepicker>
-                <label>What is you destination city?</label>
+                <label>What is your destination city?</label>
                 <input type="text" title="city" placeholder="Destination city" ng-model="search.city"/>
                 <button type="submit" class="btn" ng-click="searchSpots($event)">Search</button>
             </form>
